@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Antd Admin
 
 [![React Native](https://img.shields.io/badge/react-^15.4.4-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
@@ -121,3 +122,6 @@ web
 移动
 
 ![](assets/4.2.1-demo-2.gif)
+=======
+# react
+>>>>>>> 7d91fbaf0e3eb19fed269bf5ea520c456145d77b
