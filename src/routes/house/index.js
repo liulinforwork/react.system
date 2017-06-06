@@ -93,8 +93,6 @@ const requestOptions = [
     },
     desc: 'cross-domain request by yahoo\'s yql',
   }]
-
-
 const Search = Input.Search;
 const data = [{
   key: '1',
@@ -106,9 +104,6 @@ const data = [{
   name: 'Jim Green',
   age: 42,
   address: 'London No. 1 Lake Park',
-  age: 42,
-  age: 42,
-  age: 42,
 }, {
   key: '3',
   name: 'Joe Black',
@@ -120,9 +115,6 @@ const data = [{
   age: 32,
   address: 'London No. 2 Lake Park',
 }];
-
-
-
 export default class RequestPage extends React.Component {
   constructor (props) {
     super(props)
@@ -135,7 +127,6 @@ export default class RequestPage extends React.Component {
   componentDidMount () {
     this.handleRequest()
   }
-
   handleRequest = () => {
     const { currntRequest } = this.state
     const { desc, ...requestParams } = currntRequest
@@ -154,7 +145,6 @@ export default class RequestPage extends React.Component {
       this.setState(state)
     })
   }
-
   handeleURLChange = (value) => {
     const state = this.state
     const curretUrl = value.split('?')[0]
@@ -166,7 +156,6 @@ export default class RequestPage extends React.Component {
     state.currntRequest = currntItem[0]
     this.setState(state)
   }
-
   state = {
     filteredInfo: null,
     sortedInfo: null,
@@ -261,9 +250,16 @@ export default class RequestPage extends React.Component {
       // sorter: (a, b) => a.address.length - b.address.length,
       // sortOrder: sortedInfo.columnKey === 'address' && sortedInfo.order,
     }];
+    const styleObj = {
+      "margin":"20px auto"
+    }
     return (
-      <div className={styles.createwp}>
-        <h3 className={styles.create}><Button type="primary">创建项目</Button></h3>
+      <div className="content-inner">
+
+        <div>
+          <Button style={styleObj} type="primary">创建项目</Button>
+        </div>
+
         <div className={styles.uo}>
           <div className="table-operations">
             <h3>待审状态：</h3>
@@ -292,7 +288,12 @@ export default class RequestPage extends React.Component {
             className={styles.input2}
           />
 
-          <Table columns={columns} dataSource={data} onChange={this.handleChange} />
+          <Table
+            columns={columns}
+            dataSource={data}
+            onChange={this.handleChange}
+            bordered
+          />
         </div>
       </div>
 

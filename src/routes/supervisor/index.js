@@ -252,15 +252,15 @@ export default class RequestPage extends React.Component {
     const { method = 'get' } = currntRequest
 
     return (
-      <div>
+
+      <div className="content-inner">
         <div className={styles.sale1}>
 
           <div className={styles.money}>
             <h3>已支付金额：<span>200:00</span></h3>
             <h3>当前金额：<span>199:00</span><span className={styles.sale2}> 充值</span></h3>
           </div>
-
-
+          
           <div className={styles.time}>
             <RangePicker
               defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}
@@ -270,7 +270,11 @@ export default class RequestPage extends React.Component {
           </div>
 
           <div className={styles.tsdfs}>
-            <Table columns={columns} dataSource={data} />
+            <Table
+              columns={columns}
+              dataSource={data}
+              bordered
+            />
           </div>
 
         </div>

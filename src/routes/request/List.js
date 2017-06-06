@@ -33,13 +33,13 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
     //   render: (text) => <img alt={'avatar'} width={24} src={text} />,
     // },
     {
-      title: '编号',
+      title: '用户名',
       dataIndex: 'name',
       key: 'name',
       // render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
     }
     , {
-      title: '姓名',
+      title: '账号',
       dataIndex: 'nickName',
       key: 'nickName',
     }
@@ -57,7 +57,7 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
     //         : 'Female'}</span>,
     // }
     , {
-      title: '电话号码',
+      title: '创建时间',
       dataIndex: 'phone',
       key: 'phone',
     }
@@ -72,7 +72,7 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
     //   key: 'address',
     // }
     , {
-      title: '离职时间',
+      title: '编辑人',
       dataIndex: 'createTime',
       key: 'createTime',
     }

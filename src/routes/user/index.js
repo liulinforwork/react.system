@@ -16,7 +16,7 @@ const User = ({ location, dispatch, user, loading }) => {
     visible: modalVisible,
     maskClosable: false,
     confirmLoading: loading.effects['user/update'],
-    title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
+    title: `${modalType === 'create' ? '添加人员' : '更新人员'}`,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       dispatch({
@@ -103,6 +103,7 @@ const User = ({ location, dispatch, user, loading }) => {
       }))
     },
     onAdd () {
+      // alert("添加人员第一步");
       dispatch({
         type: 'user/showModal',
         payload: {
@@ -115,34 +116,36 @@ const User = ({ location, dispatch, user, loading }) => {
     },
   }
 
-  const handleDeleteItems = () => {
-    dispatch({
-      type: 'user/multiDelete',
-      payload: {
-        ids: selectedRowKeys,
-      },
-    })
-  }
+  // const handleDeleteItems = () => {
+  //   dispatch({
+  //     type: 'user/multiDelete',
+  //     payload: {
+  //       ids: selectedRowKeys,
+  //     },
+  //   })
+  // }
 
   return (
     <div className="content-inner">
       <Filter {...filterProps} />
-      {
-         selectedRowKeys.length > 0 &&
-           <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
-             <Col>
-               {`Selected ${selectedRowKeys.length} items `}
-               <Popconfirm title={'Are you sure delete these items?'} placement="left" onConfirm={handleDeleteItems}>
-                 <Button type="primary" size="large" style={{ marginLeft: 8 }}>Remove</Button>
-               </Popconfirm>
-             </Col>
-           </Row>
-      }
+
       <List {...listProps} />
       {modalVisible && <Modal {...modalProps} />}
     </div>
   )
 }
+
+/*{
+ selectedRowKeys.length > 0 &&
+ <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
+ <Col>
+ {`Selected ${selectedRowKeys.length} items `}
+ <Popconfirm title={'Are you sure delete these items?'} placement="left" onConfirm={handleDeleteItems}>
+ <Button type="primary" size="large" style={{ marginLeft: 8 }}>Remove</Button>
+ </Popconfirm>
+ </Col>
+ </Row>
+ }*/
 
 User.propTypes = {
   user: PropTypes.object,

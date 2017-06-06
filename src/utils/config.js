@@ -1,7 +1,7 @@
 module.exports = {
   name: '监理宝',
   prefix: 'antdAdmin',
-  footerText: 'Ant Design Admin  © 2017 zuiidea',
+  footerText: '四川马丁洛克网络科技  © 2017 四川成都',
   logo: '/logo.png',
   iconFontCSS: '/iconfont.css',
   iconFontJS: '/iconfont.js',
