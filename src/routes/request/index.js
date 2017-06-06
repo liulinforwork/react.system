@@ -9,6 +9,8 @@ import {
   Select,
   Input,
   Button,
+  Table,
+  Icon,
 } from 'antd'
 const { api, baseURL } = config
 const { dashboard, users, userLogin, user } = api
@@ -137,6 +139,7 @@ export default class RequestPage extends React.Component {
     this.setState(state)
   }
 
+
   render () {
     const colProps = {
       lg: 12,
@@ -145,41 +148,133 @@ export default class RequestPage extends React.Component {
     const { result, currntRequest } = this.state
     const { method = 'get' } = currntRequest
 
+    const columns = [{
+      title: '时间',
+      dataIndex: 'name',
+      key: 'name',
+      // render: text => <a href="#">{text}</a>,
+    }, {
+      title: '名称 | 对方',
+      dataIndex: 'age',
+      key: 'age',
+    }, {
+      title: '金额',
+      dataIndex: 'address',
+      key: 'address',
+    }, {
+      title: '操作',
+      key: 'action',
+      render: (text, record) => (
+        <span>
+
+      <a href="#">查看项目</a>
+
+    </span>
+      ),
+    }];
+    const data = [{
+      key: '1',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: -3423423,
+    }, {
+      key: '2',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: -232,
+    }, {
+      key: '3',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: -1007,
+    }, {
+      key: '4',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: 3423423,
+    },{
+      key: '5',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: 12321312,
+    }, {
+      key: '6',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: -3,
+    }, {
+      key: '7',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: -4665,
+    }, {
+      key: '8',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: 32240,
+    },{
+      key: '9',
+      name: '2017年06月06日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: 5645,
+    }, {
+      key: '10',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: -443,
+    }, {
+      key: '11',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: -4546,
+    }, {
+      key: '12',
+      name: '2017年6月6日 00:02',
+      age: '工程公开 客户:***********34238',
+      address: -676,
+    }];
+
+
     return (
-      <div className="content-inner">
-        <Row gutter={32}>
-          <Col {...colProps}>
-            <Card title="Request" style={{
-              overflow: 'visible',
-            }}>
-              <div className={styles.option}>
-                <Select style={{
-                  width: '100%',
-                  flex: 1,
-                }} defaultValue={`${method.toLocaleUpperCase()}   ${requestOptions[0].url}`}
-                  size="large"
-                  onChange={this.handeleURLChange}
-                >
-                  {requestOptions.map((item, index) => {
-                    const m = item.method || 'get'
-                    return (<Select.Option key={index} value={`${item.url}?${m}`}>
-                      {`${m.toLocaleUpperCase()}    `}{item.url}
-                    </Select.Option>)
-                  })}
-                </Select>
-                <Button type="primary" style={{ width: 100, marginLeft: 16 }} onClick={this.handleRequest}>发送</Button>
-              </div>
-              <div className={styles.params}>
-                <div className={styles.label}>Params：</div>
-                <Input disabled value={currntRequest.data ? JSON.stringify(currntRequest.data) : 'null'} size="large" style={{ width: 200 }} placeholder="null" />
-                <div style={{ flex: 1, marginLeft: 16 }}>{currntRequest.desc}</div>
-              </div>
-              <div className={styles.result}>
-                {result}
-              </div>
-            </Card>
-          </Col>
-        </Row>
+      // <div className="content-inner">
+      //   <Row gutter={32}>
+      //     <Col {...colProps}>
+      //       <Card title="Request" style={{
+      //         overflow: 'visible',
+      //       }}>
+      //         <div className={styles.option}>
+      //           <Select style={{
+      //             width: '100%',
+      //             flex: 1,
+      //           }} defaultValue={`${method.toLocaleUpperCase()}   ${requestOptions[0].url}`}
+      //             size="large"
+      //             onChange={this.handeleURLChange}
+      //           >
+      //             {requestOptions.map((item, index) => {
+      //               const m = item.method || 'get'
+      //               return (<Select.Option key={index} value={`${item.url}?${m}`}>
+      //                 {`${m.toLocaleUpperCase()}    `}{item.url}
+      //               </Select.Option>)
+      //             })}
+      //           </Select>
+      //           <Button type="primary" style={{ width: 100, marginLeft: 16 }} onClick={this.handleRequest}>发送</Button>
+      //         </div>
+      //         <div className={styles.params}>
+      //           <div className={styles.label}>Params：</div>
+      //           <Input disabled value={currntRequest.data ? JSON.stringify(currntRequest.data) : 'null'} size="large" style={{ width: 200 }} placeholder="null" />
+      //           <div style={{ flex: 1, marginLeft: 16 }}>{currntRequest.desc}</div>
+      //         </div>
+      //         <div className={styles.result}>
+      //           {result}
+      //         </div>
+      //       </Card>
+      //     </Col>
+      //   </Row>
+      // </div>
+      <div>
+        <div className={styles.tsdfs}>
+          <Table columns={columns} dataSource={data} />
+        </div>
       </div>
     )
   }

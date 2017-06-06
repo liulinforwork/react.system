@@ -159,6 +159,30 @@ module.exports = [
     bpid: 1,
     name: '项目管理',
     icon: 'setting',
-    router: '/supervisor2',
-  }
+    router: '/house',
+  },
+  // {
+  //   id:81,
+  //   bpid: 1,
+  //   name: '项目管理1',
+  //   router: '/supervisor2',
+  // },
+  // {
+  //   id:82,
+  //   bpid: 1,
+  //   name: '项目管理2',
+  //   router: '/supervisor2',
+  // },
+  // {
+  //   id:83,
+  //   bpid: 1,
+  //   name: '项目管理3',
+  //   router: '/supervisor2',
+  // },
+  // {
+  //   id:84,
+  //   bpid: 1,
+  //   name: '项目管理4',
+  //   router: '/supervisor2',
+  // }
 ]

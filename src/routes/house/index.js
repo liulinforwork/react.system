@@ -10,114 +10,9 @@ import {
   Input,
   Button,
   Table,
-  Icon,
-  DatePicker
 } from 'antd'
 const { api, baseURL } = config
 const { dashboard, users, userLogin, user } = api
-
-import moment from 'moment';
-const { MonthPicker, RangePicker } = DatePicker;
-const dateFormat = 'YYYY/MM/DD';
-const monthFormat = 'YYYY/MM';
-
-
-const columns = [{
-  title: '时间',
-  dataIndex: 'name',
-  key: 'name',
-  // render: text => <a href="#">{text}</a>,
-}, {
-  title: '名称 | 对方',
-  dataIndex: 'age',
-  key: 'age',
-}, {
-  title: '金额',
-  dataIndex: 'address',
-  key: 'address',
-}, {
-  title: '操作',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-
-      <a href="#">查看项目</a>
-
-    </span>
-  ),
-}];
-// <a href="#">Action 一 {record.name}</a>
-
-
-// <span className="ant-divider" />
-// <a href="#">Delete</a>
-// <span className="ant-divider" />
-// <a href="#" className="ant-dropdown-link">
-//   More actions <Icon type="down" />
-// </a>
-const data = [{
-  key: '1',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: -3423423,
-}, {
-  key: '2',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: -232,
-}, {
-  key: '3',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: -1007,
-}, {
-  key: '4',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: 3423423,
-},{
-  key: '5',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: 12321312,
-}, {
-  key: '6',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: -3,
-}, {
-  key: '7',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: -4665,
-}, {
-  key: '8',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: 32240,
-},{
-  key: '9',
-  name: '2017年06月06日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: 5645,
-}, {
-  key: '10',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: -443,
-}, {
-  key: '11',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: -4546,
-}, {
-  key: '12',
-  name: '2017年6月6日 00:02',
-  age: '工程公开 客户:***********34238',
-  address: -676,
-}];
-
-
 
 const requestOptions = [
   {
@@ -199,6 +94,35 @@ const requestOptions = [
     desc: 'cross-domain request by yahoo\'s yql',
   }]
 
+
+const Search = Input.Search;
+const data = [{
+  key: '1',
+  name: 'John Brown',
+  age: 32,
+  address: 'New York No. 1 Lake Park',
+}, {
+  key: '2',
+  name: 'Jim Green',
+  age: 42,
+  address: 'London No. 1 Lake Park',
+  age: 42,
+  age: 42,
+  age: 42,
+}, {
+  key: '3',
+  name: 'Joe Black',
+  age: 32,
+  address: 'Sidney No. 1 Lake Park',
+}, {
+  key: '4',
+  name: 'Jim Red',
+  age: 32,
+  address: 'London No. 2 Lake Park',
+}];
+
+
+
 export default class RequestPage extends React.Component {
   constructor (props) {
     super(props)
@@ -243,6 +167,34 @@ export default class RequestPage extends React.Component {
     this.setState(state)
   }
 
+  state = {
+    filteredInfo: null,
+    sortedInfo: null,
+  };
+  handleChange = (pagination, filters, sorter) => {
+    console.log('Various parameters', pagination, filters, sorter);
+    this.setState({
+      filteredInfo: filters,
+      sortedInfo: sorter,
+    });
+  }
+  clearFilters = () => {
+    this.setState({ filteredInfo: null });
+  }
+  clearAll = () => {
+    this.setState({
+      filteredInfo: null,
+      sortedInfo: null,
+    });
+  }
+  setAgeSort = () => {
+    this.setState({
+      sortedInfo: {
+        order: 'descend',
+        columnKey: 'age',
+      },
+    });
+  }
   render () {
     const colProps = {
       lg: 12,
@@ -251,30 +203,99 @@ export default class RequestPage extends React.Component {
     const { result, currntRequest } = this.state
     const { method = 'get' } = currntRequest
 
+    let { sortedInfo, filteredInfo } = this.state;
+    sortedInfo = sortedInfo || {};
+    filteredInfo = filteredInfo || {};
+    const columns = [{
+      title: '编号',
+      dataIndex: 'name',
+      key: 'name',
+      // filters: [
+      //   { text: 'Joe', value: 'Joe' },
+      //   { text: 'Jim', value: 'Jim' },
+      // ],
+      // filteredValue: filteredInfo.name || null,
+      // onFilter: (value, record) => record.name.includes(value),
+      // sorter: (a, b) => a.name.length - b.name.length,
+      // sortOrder: sortedInfo.columnKey === 'name' && sortedInfo.order,
+    }, {
+      title: '项目名称',
+      dataIndex: 'age',
+      key: 'age',
+      // sorter: (a, b) => a.age - b.age,
+      // sortOrder: sortedInfo.columnKey === 'age' && sortedInfo.order,
+    }, {
+      title: '位置',
+      dataIndex: 'age',
+      key: 'age',
+      // sorter: (a, b) => a.age - b.age,
+      // sortOrder: sortedInfo.columnKey === 'age' && sortedInfo.order,
+    }, {
+      title: '负责人员',
+      dataIndex: 'age',
+      key: 'age',
+      // sorter: (a, b) => a.age - b.age,
+      // sortOrder: sortedInfo.columnKey === 'age' && sortedInfo.order,
+    }, {
+      title: '项目阶段',
+      dataIndex: 'age',
+      key: 'age',
+      // sorter: (a, b) => a.age - b.age,
+      // sortOrder: sortedInfo.columnKey === 'age' && sortedInfo.order,
+    }, {
+      title: '是否公开',
+      dataIndex: 'age',
+      key: 'age',
+      // sorter: (a, b) => a.age - b.age,
+      // sortOrder: sortedInfo.columnKey === 'age' && sortedInfo.order,
+    },{
+      title: '操作',
+      dataIndex: 'address',
+      key: 'address',
+      // filters: [
+      //   { text: 'London', value: 'London' },
+      //   { text: 'New York', value: 'New York' },
+      // ],
+      // filteredValue: filteredInfo.address || null,
+      // onFilter: (value, record) => record.address.includes(value),
+      // sorter: (a, b) => a.address.length - b.address.length,
+      // sortOrder: sortedInfo.columnKey === 'address' && sortedInfo.order,
+    }];
     return (
-      <div>
-        <div className={styles.sale1}>
+      <div className={styles.createwp}>
+        <h3 className={styles.create}><Button type="primary">创建项目</Button></h3>
+        <div className={styles.uo}>
+          <div className="table-operations">
+            <h3>待审状态：</h3>
+            <Button size='small' onClick={this.setAgeSort} className={styles.createwp1}>待审</Button>
+            <Button size='small' onClick={this.clearFilters} className={styles.createwp1}>已审</Button>
+            <Button size='small' onClick={this.clearAll} className={styles.createwp1}>全部</Button>
+          </div>
+          <div className="table-operations">
 
-          <div className={styles.money}>
-            <h3>已支付金额：<span>200:00</span></h3>
-            <h3>当前金额：<span>199:00</span><span className={styles.sale2}> 充值</span></h3>
+            <h3>工程阶段：</h3>
+            <Button size='small' onClick={this.setAgeSort} className={styles.createwp1}>进行中</Button>
+            <Button size='small' onClick={this.clearFilters} className={styles.createwp1}>已完工</Button>
+            <Button size='small' onClick={this.clearAll} className={styles.createwp1}>全部</Button>
+          </div>
+          <div className="table-operations">
+            <h3>是否公开：</h3>
+            <Button size='small' onClick={this.setAgeSort} className={styles.createwp1}>未公开</Button>
+            <Button size='small' onClick={this.clearFilters} className={styles.createwp1}>已公开</Button>
+            <Button size='small' onClick={this.clearAll} className={styles.createwp1}>全部</Button>
           </div>
 
+          <Search
+            placeholder="请输入你需要搜索的楼盘"
+            style={{ width: 200 }}
+            onSearch={value => console.log(value)}
+            className={styles.input2}
+          />
 
-          <div className={styles.time}>
-            <RangePicker
-              defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}
-              format={dateFormat}
-            />
-            <Button type="primary" className={styles.btmsdf}>查询</Button>
-          </div>
-
-          <div className={styles.tsdfs}>
-            <Table columns={columns} dataSource={data} />
-          </div>
-
+          <Table columns={columns} dataSource={data} onChange={this.handleChange} />
         </div>
       </div>
+
       // <div className="content-inner">
       //   <Row gutter={32}>
       //     <Col {...colProps}>

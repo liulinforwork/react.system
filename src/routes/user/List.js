@@ -24,51 +24,52 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
   }
 
   const columns = [
+    // {
+    //   title: 'Avatar',
+    //   dataIndex: 'avatar',
+    //   key: 'avatar',
+    //   width: 64,
+    //   className: styles.avatar,
+    //   render: (text) => <img alt={'avatar'} width={24} src={text} />,
+    // },
     {
-      title: 'Avatar',
-      dataIndex: 'avatar',
-      key: 'avatar',
-      width: 64,
-      className: styles.avatar,
-      render: (text) => <img alt={'avatar'} width={24} src={text} />,
-    }, {
-      title: 'Name',
+      title: '编号',
       dataIndex: 'name',
       key: 'name',
-      render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
+      // render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
     }, {
-      title: 'NickName',
+      title: '姓名',
       dataIndex: 'nickName',
       key: 'nickName',
     }, {
-      title: 'Age',
+      title: '年龄',
       dataIndex: 'age',
       key: 'age',
     }, {
-      title: 'Gender',
+      title: '性别',
       dataIndex: 'isMale',
       key: 'isMale',
       render: (text) => <span>{text
             ? 'Male'
             : 'Female'}</span>,
     }, {
-      title: 'Phone',
+      title: '电话号码',
       dataIndex: 'phone',
       key: 'phone',
     }, {
-      title: 'Email',
+      title: '电子邮箱',
       dataIndex: 'email',
       key: 'email',
     }, {
-      title: 'Address',
+      title: '居住地址',
       dataIndex: 'address',
       key: 'address',
     }, {
-      title: 'CreateTime',
+      title: '创建时间',
       dataIndex: 'createTime',
       key: 'createTime',
     }, {
-      title: 'Operation',
+      title: '操作',
       key: 'operation',
       width: 100,
       render: (text, record) => {

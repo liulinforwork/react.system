@@ -63,17 +63,17 @@ const User = ({ location, dispatch, user, loading }) => {
         },
       })
     },
-    rowSelection: {
-      selectedRowKeys,
-      onChange: (keys) => {
-        dispatch({
-          type: 'user/updateState',
-          payload: {
-            selectedRowKeys: keys,
-          },
-        })
-      },
-    },
+    // rowSelection: {
+    //   selectedRowKeys,
+    //   onChange: (keys) => {
+    //     dispatch({
+    //       type: 'user/updateState',
+    //       payload: {
+    //         selectedRowKeys: keys,
+    //       },
+    //     })
+    //   },
+    // },
   }
 
   const filterProps = {

@@ -49,12 +49,25 @@ const Routers = function ({ history, app }) {
           },
         },
 
+        //监理
         {
           path: 'supervisor',
           getComponent (nextState, cb) {
             require.ensure([], require => {
               registerModel(app, require('./models/login'))
               cb(null, require('./routes/supervisor/'))
+            }, 'login')
+          },
+        },
+
+
+        //商品房
+        {
+          path: 'house',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/login'))
+              cb(null, require('./routes/house/'))
             }, 'login')
           },
         },
