@@ -33,7 +33,7 @@ const modal = ({
         ...getFieldsValue(),
         key: item.key,
       }
-      data.address = data.address.join(' ')
+      // data.address = data.address.join(' ')
       onOk(data)
     })
   }
@@ -45,40 +45,43 @@ const modal = ({
 
   return (
     <Modal {...modalOpts}>
+
       <Form layout="horizontal">
-        <FormItem label="编号" hasFeedback {...formItemLayout}>
+        <FormItem label="账号" hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
-            initialValue: item.name,
+            // initialValue: item.name,
             rules: [
               {
                 required: true,
+                message: '请输入你的账号',
               },
             ],
-          })(<Input />)}
+          })(<Input placeholder="需确保账号唯一"/>)}
         </FormItem>
-        <FormItem label="姓名" hasFeedback {...formItemLayout}>
+
+        <FormItem label="密码" hasFeedback {...formItemLayout} help="请输入密码">
           {getFieldDecorator('nickName', {
-            initialValue: item.nickName,
+            // initialValue: item.nickName,
             rules: [
               {
                 required: true,
+                message: '请输入你的密码',
               },
             ],
-          })(<Input />)}
+          })(<Input placeholder="字母、数字或者英文符号，6~32位，区分大小写" />)}
         </FormItem>
 
-
-        <FormItem label="手机号码" hasFeedback {...formItemLayout}>
+        <FormItem label="用户名" hasFeedback {...formItemLayout}>
           {getFieldDecorator('phone', {
-            initialValue: item.phone,
+            // initialValue: item.phone,
             rules: [
               {
                 required: true,
                 pattern: /^1[34578]\d{9}$/,
-                message: 'The input is not valid phone!',
+                message: '请输入你的用户名',
               },
             ],
-          })(<Input />)}
+          })(<Input placeholder="字母、数字或者中英文符号，6~32位，区分大小写"/>)}
         </FormItem>
 
       </Form>

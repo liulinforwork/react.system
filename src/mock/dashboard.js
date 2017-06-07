@@ -102,23 +102,51 @@ const Dashboard = Mock.mock({
     {
       icon: 'pay-circle-o',
       color: color.green,
-      title: 'Online Review',
+      title: '创建项目',
       number: 2781,
     }, {
       icon: 'team',
       color: color.blue,
-      title: 'New Customers',
+      title: '人员管理',
       number: 3241,
     }, {
       icon: 'message',
       color: color.purple,
-      title: 'Active Projects',
+      title: '项目管理',
       number: 253,
     }, {
       icon: 'shopping-cart',
       color: color.red,
-      title: 'Referrals',
+      title: '我的账号',
       number: 4324,
+    }, {
+      icon: 'shopping-cart',
+      color: color.red,
+      title: '账号管理',
+      number: 2655,
+    }, {
+      icon: 'shopping-cart',
+      color: color.red,
+      title: '注册',
+      number: 9989,
+    },{
+      icon: 'shopping-cart',
+      color: color.red,
+      title: '注销登录',
+      number: 9989,
+    },
+  ],
+  todo:[
+    {
+      icon: 'pay-circle-o',
+      color: color.green,
+      title: '待审项目',
+      number: 99,
+    }, {
+      icon: 'team',
+      color: color.blue,
+      title: '公开请求',
+      number: 0,
     },
   ],
 })

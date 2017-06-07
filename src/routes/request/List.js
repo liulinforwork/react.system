@@ -10,18 +10,39 @@ import { Link } from 'dva/router'
 const confirm = Modal.confirm
 
 const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) => {
-  // const handleMenuClick = (record, e) => {
-  //   if (e.key === '1') {
-  //     onEditItem(record)
-  //   } else if (e.key === '2') {
-  //     confirm({
-  //       title: '你确定要删除该条数据吗？',
-  //       onOk () {
-  //         onDeleteItem(record.id)
-  //       },
-  //     })
-  //   }
-  // }
+
+  const handleMenuClick = (record, e) => {
+    switch (e.key){
+      case '1':
+        confirm({
+          title: '你确定要绑定账号与电脑吗？',
+          onOk () {
+            // onDeleteItem(record.id)
+          }
+        });
+        // onEditItem(record);
+        break;
+      case '2':
+        confirm({
+          title: '你确定要解除绑定吗？',
+          onOk () {
+            // onDeleteItem(record.id)
+          }
+        });
+        break;
+      case '3':
+        confirm({
+          title: '你确定要删除该条数据吗？',
+          onOk () {
+            onDeleteItem(record.id)
+          }
+        });
+        break;
+      default:
+        console.log("点击逻辑错误");
+        break;
+    }
+  };
 
   const columns = [
     // {
@@ -35,14 +56,14 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
     {
       title: '用户名',
       dataIndex: 'name',
-      key: 'name',
+      key: 'name'
       // render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
-    }
-    , {
+    },
+    {
       title: '账号',
       dataIndex: 'nickName',
-      key: 'nickName',
-    }
+      key: 'nickName'
+    },
     // , {
     //   title: '年龄',
     //   dataIndex: 'age',
@@ -56,10 +77,10 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
     //         ? 'Male'
     //         : 'Female'}</span>,
     // }
-    , {
+    {
       title: '创建时间',
       dataIndex: 'phone',
-      key: 'phone',
+      key: 'phone'
     }
     // , {
     //   title: '电子邮箱',
@@ -71,29 +92,29 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
     //   dataIndex: 'address',
     //   key: 'address',
     // }
-    , {
+    ,
+    {
       title: '编辑人',
       dataIndex: 'createTime',
-      key: 'createTime',
+      key: 'createTime'
     }
-    , {
+    ,
+    {
       title: '操作',
       key: 'operation',
       width: 100,
       render: (text, record) => {
-        return    <h3>至为离职</h3>
-          // <h3>--</h3>
-        // return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: '更新' }, { key: '2', name: '删除' }]} />
-      },
-    },
-  ]
+        return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: '绑定' }, { key: '2', name: '解除绑定' },{ key: '3', name: '删除' }]} />
+      }
+    }
+  ];
 
   const getBodyWrapperProps = {
     page: location.query.page,
-    current: tableProps.pagination.current,
-  }
+    current: tableProps.pagination.current
+  };
 
-  const getBodyWrapper = body => { return isMotion ? <AnimTableBody {...getBodyWrapperProps} body={body} /> : body }
+  const getBodyWrapper = body => { return isMotion ? <AnimTableBody {...getBodyWrapperProps} body={body} /> : body };
 
   return (
     <div>
@@ -109,13 +130,13 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
       />
     </div>
   )
-}
+};
 
 List.propTypes = {
   onDeleteItem: PropTypes.func,
   onEditItem: PropTypes.func,
   isMotion: PropTypes.bool,
-  location: PropTypes.object,
-}
+  location: PropTypes.object
+};
 
 export default List

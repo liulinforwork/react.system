@@ -16,7 +16,8 @@ const User = ({ location, dispatch, user, loading }) => {
     visible: modalVisible,
     maskClosable: false,
     confirmLoading: loading.effects['user/update'],
-    title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
+    // title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
+    title: `添加账号`,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       dispatch({
@@ -81,27 +82,27 @@ const User = ({ location, dispatch, user, loading }) => {
     filter: {
       ...location.query,
     },
-    onFilterChange (value) {
-      dispatch(routerRedux.push({
-        pathname: location.pathname,
-        query: {
-          ...value,
-          page: 1,
-          pageSize,
-        },
-      }))
-    },
-    onSearch (fieldsValue) {
-      fieldsValue.keyword.length ? dispatch(routerRedux.push({
-        pathname: '/user',
-        query: {
-          field: fieldsValue.field,
-          keyword: fieldsValue.keyword,
-        },
-      })) : dispatch(routerRedux.push({
-        pathname: '/user',
-      }))
-    },
+    // onFilterChange (value) {
+    //   dispatch(routerRedux.push({
+    //     pathname: location.pathname,
+    //     query: {
+    //       ...value,
+    //       page: 1,
+    //       pageSize,
+    //     },
+    //   }))
+    // },
+    // onSearch (fieldsValue) {
+    //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
+    //     pathname: '/user',
+    //     query: {
+    //       field: fieldsValue.field,
+    //       keyword: fieldsValue.keyword,
+    //     },
+    //   })) : dispatch(routerRedux.push({
+    //     pathname: '/user',
+    //   }))
+    // },
     onAdd () {
       dispatch({
         type: 'user/showModal',
@@ -110,9 +111,9 @@ const User = ({ location, dispatch, user, loading }) => {
         },
       })
     },
-    switchIsMotion () {
-      dispatch({ type: 'user/switchIsMotion' })
-    },
+    // switchIsMotion () {
+    //   dispatch({ type: 'user/switchIsMotion' })
+    // },
   }
 
   // const handleDeleteItems = () => {
