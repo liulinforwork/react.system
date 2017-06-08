@@ -6,12 +6,12 @@ import { NumberCard, Quote, Sales, Weather, RecentSales, Comments, Completed, Br
 import styles from './index.less'
 import { color } from '../../utils'
 
-const bodyStyle = {
-  bodyStyle: {
-    height: 432,
-    background: '#fff',
-  },
-}
+// const bodyStyle = {
+//   bodyStyle: {
+//     height: 432,
+//     background: '#fff',
+//   },
+// }
 
 function Dashboard ({ dashboard }) {
   const { weather, sales, quote, numbers,todo, recentSales, comments, completed, browser, cpu, user } = dashboard

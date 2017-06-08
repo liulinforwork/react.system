@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Table, Modal } from 'antd'
 import styles from './List.less'
 import classnames from 'classnames'
-import AnimTableBody from '../../components/DataTable/AnimTableBody'
-import { DropOption } from '../../components'
+import AnimTableBody from '../../../components/DataTable/AnimTableBody'
+import { DropOption } from '../../../components'
 import { Link } from 'dva/router'
 
 const confirm = Modal.confirm

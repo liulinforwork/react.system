@@ -22,8 +22,8 @@ const Sider = ({ siderFold, darkTheme, location, changeTheme, navOpenKeys, chang
       </div>
       <Menus {...menusProps} />
       {!siderFold ? <div className={styles.switchtheme}>
-        <span><Icon type="bulb" />Switch Theme</span>
-        <Switch onChange={changeTheme} defaultChecked={darkTheme} checkedChildren="Dark" unCheckedChildren="Light" />
+        <span><Icon type="bulb" />灯光模式</span>
+        <Switch onChange={changeTheme} defaultChecked={darkTheme} checkedChildren="夜间" unCheckedChildren="白天" />
       </div> : ''}
     </div>
   )

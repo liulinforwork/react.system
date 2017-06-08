@@ -192,7 +192,7 @@ export default {
   subscriptions: {
     setup ({ dispatch }) {
       dispatch({ type: 'query' })
-      dispatch({ type: 'queryWeather' })
+      // dispatch({ type: 'queryWeather' })
     },
   },
   effects: {
@@ -202,25 +202,25 @@ export default {
       const data = yield call(query, parse(payload))
       yield put({ type: 'queryWeather', payload: { ...data } })
     },
-    *queryWeather ({
-      payload,
-    }, { call, put }) {
-      const myCityResult = yield call(myCity, { flg: 0 })
-      const result = yield call(queryWeather, { cityCode: myCityResult.selectCityCode })
-      const weather = zuimei.parseActualData(result.data.actual)
-      weather.city = myCityResult.selectCityName
-      yield put({ type: 'queryWeatherSuccess', payload: {
-        weather,
-      } })
-    },
+    // *queryWeather ({
+    //   payload,
+    // }, { call, put }) {
+    //   const myCityResult = yield call(myCity, { flg: 0 })
+    //   const result = yield call(queryWeather, { cityCode: myCityResult.selectCityCode })
+    //   const weather = zuimei.parseActualData(result.data.actual)
+    //   weather.city = myCityResult.selectCityName
+    //   yield put({ type: 'queryWeatherSuccess', payload: {
+    //     weather,
+    //   } })
+    // },
   },
   reducers: {
-    queryWeatherSuccess (state, action) {
-      return {
-        ...state,
-        ...action.payload,
-      }
-    },
+    // queryWeatherSuccess (state, action) {
+    //   return {
+    //     ...state,
+    //     ...action.payload,
+    //   }
+    // },
     queryWeather (state, action) {
       return {
         ...state,

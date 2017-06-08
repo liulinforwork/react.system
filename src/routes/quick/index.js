@@ -1,80 +1,68 @@
 import React from 'react'
-
 // import { DataTable } from '../../../components'
+import { Button,Table } from 'antd'
 
-import { Table, Row, Col, Card, Select,Input  } from 'antd'
-const Option = Select.Option;
-
-function handleChange(value) {
-  console.log(`selected ${value}`);
-}
 class DataTablePage extends React.Component {
-  // constructor (props) {
-  //   super(props)
-  // this.state = { filterCase: {
-  //   gender: '',
-  // } }
-  // }
 
 
+
+  // const getBodyWrapperProps = {
+  //   page: location.query.page,
+  //   current: tableProps.pagination.current
+  // };
+  //
+  // const getBodyWrapper = body => { return isMotion ? <AnimTableBody {...getBodyWrapperProps} body={body} /> : body };
   render () {
     // const { filterCase } = this.state
+
+    const columns = [
+      {
+        title: '编号',
+        dataIndex: 'name',
+        key: 'name'
+        // render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
+      },
+      {
+        title: '内容',
+        dataIndex: 'nickName',
+        key: 'nickName'
+      },
+      {
+        title: '操作',
+        key: 'operation',
+        width: 100,
+        render: (text, record) => {
+          return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: '绑定' }, { key: '2', name: '解除绑定' },{ key: '3', name: '删除' }]} />
+        }
+      }
+    ];
     const styleObj = {
-      width:'100%',
-      height:'auto'
+      "margin":"20px auto"
     };
     return (<div className="content-inner">
-      <h3>项目信息</h3>
-      <div className={styleObj}>
-        <Col lg={24} md={24}>
-          <label htmlFor="">项目名称</label>
-          <Input placeholder="请输入项目名称" />
-          <label htmlFor="">项目地址</label>
-          <Input placeholder="请输入项目地址" />
-          <label htmlFor="">项目简介</label>
-          <Input type="textarea" rows={4} placeholder="请输入项目简介" />
-        </Col>
-      </div>
-
-      <h3>选择工程人员</h3>
-      <Col lg={12} md={24}>
-        <Col lg={12} md={24}>
-          <label htmlFor="">监理</label>
-          <Select
-            showSearch
-            style={{ width: 200 }}
-            placeholder="选择一个监理"
-            optionFilterProp="children"
-            onChange={handleChange}
-            filterOption={(input, option) => option.props.value.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-          >
-          <Option value="jack">Jack</Option>
-          <Option value="lucy">Lucy</Option>
-          <Option value="tom">Tom</Option>
-        </Select>
-        </Col>
-        <Col lg={12} md={24}>
-          <label htmlFor="">工长</label>
-          <Select
-            showSearch
-            style={{ width: 200 }}
-            placeholder="选择一个岗位"
-            optionFilterProp="children"
-            onChange={handleChange}
-            filterOption={(input, option) => option.props.value.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-          >
-          <Option value="jack">Jack</Option>
-          <Option value="lucy">Lucy</Option>
-          <Option value="tom">Tom</Option>
-        </Select>
-        </Col>
-      </Col>
+      <Button style={styleObj} type="primary">添加</Button>
+      <Table
+        // {...tableProps}
+        // className={classnames({ [styles.table]: true, [styles.motion]: isMotion })}
+        bordered
+        // scroll={{ x: 1250 }}
+        columns={columns}
+        simple
+        // rowKey={record => record.id}
+        // getBodyWrapper={getBodyWrapper}
+      />
     </div>)
   }
 }
 
 
 export default DataTablePage
+// constructor (props) {
+//   super(props)
+// this.state = { filterCase: {
+//   gender: '',
+// } }
+// }
 // handleSelectChange = (gender) => {
 //   this.setState({
 //     filterCase: {

@@ -45,14 +45,6 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
   };
 
   const columns = [
-    // {
-    //   title: 'Avatar',
-    //   dataIndex: 'avatar',
-    //   key: 'avatar',
-    //   width: 64,
-    //   className: styles.avatar,
-    //   render: (text) => <img alt={'avatar'} width={24} src={text} />,
-    // },
     {
       title: '用户名',
       dataIndex: 'name',
@@ -64,34 +56,11 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
       dataIndex: 'nickName',
       key: 'nickName'
     },
-    // , {
-    //   title: '年龄',
-    //   dataIndex: 'age',
-    //   key: 'age',
-    // }
-    // , {
-    //   title: '性别',
-    //   dataIndex: 'isMale',
-    //   key: 'isMale',
-    //   render: (text) => <span>{text
-    //         ? 'Male'
-    //         : 'Female'}</span>,
-    // }
     {
       title: '创建时间',
       dataIndex: 'phone',
       key: 'phone'
     }
-    // , {
-    //   title: '电子邮箱',
-    //   dataIndex: 'email',
-    //   key: 'email',
-    // }
-    // , {
-    //   title: '居住地址',
-    //   dataIndex: 'address',
-    //   key: 'address',
-    // }
     ,
     {
       title: '编辑人',

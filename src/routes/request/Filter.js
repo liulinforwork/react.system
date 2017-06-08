@@ -23,7 +23,7 @@ const TwoColProps = {
 
 const Filter = ({
   onAdd,
-  isMotion,
+  // isMotion,
   // switchIsMotion,
   // onFilterChange,
   filter,
