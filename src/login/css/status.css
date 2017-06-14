@@ -1,0 +1,57 @@
+@charset "utf-8";
+/*@author blue @create date 2017-06-14 @info status.css*/
+
+.status{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.status_wrap{
+    padding-left: 100px;
+    margin-top: 100px;
+    min-width: 600px;
+}
+.status_left,.status_right{
+    display: inline-block;
+    margin-bottom: 60px;
+    vertical-align: top;
+}
+.status_left{
+    margin-right: 60px;
+}
+.status_left img{
+    display: block;
+    width: 70px;
+    height: 70px;
+}
+.status_right{
+    margin-bottom: 30px;
+}
+.status_right h3{
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+.status_name{
+    font-weight: bold;
+}
+.status_name span{
+    color: #e13838;
+}
+.status_info{
+    font-size: 14px;
+}
+.status_btn{
+    padding-left: 135px;
+}
+.status_btn span{
+    display: block;
+    width: 170px;
+    height: 38px;
+    line-height: 38px;
+    background-color: #0099FF;
+    color: white;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+}

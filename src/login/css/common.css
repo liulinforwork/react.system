@@ -1,0 +1,51 @@
+@charset "utf-8";
+/*@author blue @create date 2017-06-14 @info common.css*/
+
+html,body,div,p,a,img,ul,li,label,input,span,h2,form{
+    margin:0;
+    padding:0;
+}
+html{
+    font-family: "微软雅黑";
+}
+a{
+    text-decoration: none;
+    color:#3FA1FC;
+    border:0;
+    outline:none;
+}
+ul li{
+    list-style: none;
+}
+img{
+    border:0;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+.header{
+    width: 95%;
+    height: 100px;
+    line-height: 100px;
+    padding-left: 5%;
+    font-size: 30px;
+    color: #707070;
+}
+.header_img{
+    display: inline-block;
+    width: 360px;
+    margin: 25px 0;
+    text-align: center;
+}
+.header_title{
+    color: black;
+}
+.footer{
+    margin-top:50px;
+}
+.footer p{
+    text-align:center;
+    font-size:14px;
+    color:#969696;
+}

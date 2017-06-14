@@ -1,0 +1,67 @@
+<!---@author blue @create date 2017-06-14 @info login.html--->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监理宝后台管理系统</title>
+    <meta name="Keywords" content="监理宝；管理后台"/>
+    <link rel="shortcut icon" type="image/x-icon" href="./images/x-icon.png"/>
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+</head>
+<body>
+    <div class="header">
+        <a href="https://www.makeba.com">
+            <div class="header_imgWrap">
+                <img src="./images/logo.png" class="header_img" alt="图片加载失败">
+            </div>
+        </a>
+    </div>
+    <div class="main">
+        <div class="login">
+            <h2>登&nbsp;录</h2>
+            <div class="tips">
+                    <p class="login_error"></p>
+                </div>
+            <form action="#" class="jsForm" method="post">
+                <ul>
+                    <li>
+                        <span class="login_icon username"></span>
+                        <input type="text" name="username" id="username" placeholder="账号" required data-rule-mobile="true" data-msg-required="请输入你的账号" data-msg-mobile="请输入正确格式" maxlength="32">
+                    </li>
+                    <li>
+                        <span class="login_icon pwd"></span>
+                        <input type="password" name="pwd" id="pwd" placeholder="密码" required data-msg-required="请输入密码" maxlength="32">
+                    </li>
+
+                    <li>
+                        <span class="login_icon yzm"></span>
+                        <input type="text" name="yzm" maxlength="4" id="yzm" placeholder="验证码" required data-msg-required="请输入验证码" style="width: 151px;">
+                        <div class="changeYzm" title="刷新验证码">
+                            <div class="codeYzm" title="刷新验证码"></div>
+                        </div>
+                    </li>
+
+                    <li class="no_border">
+                        <a id="login" href="javascript:;">登录</a>
+                    </li>
+                    <li class="no_border login_link">
+                        <span class="login_register">还没账户？<a href="./html/register.html">立即注册</a></span>
+                        <span class="login_find"><a href="./html/find.html">忘记密码</a></span>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <p> Copyright © 2015 - <span id="years">2017</span> 四川马丁洛克网络科技有限公司  All Rights Reserved.</p>
+    </div>
+
+    <script type="text/javascript" charset="utf-8" src="./js/lib/jquery/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/lib/jquery/jquery.validate.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/lib/layer/layer.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="./js/core/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./js/layer/login.js"></script>
+</body>
+</html>
