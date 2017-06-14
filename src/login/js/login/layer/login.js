@@ -81,7 +81,7 @@
                         });
                         break;
                     case 1:
-                        window.location.href = "../../../dashboard";
+                        window.location.href = "./html/supervise/index.html";
                         break;
                     default:
                         break;

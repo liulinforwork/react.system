@@ -7,7 +7,7 @@
     }
 }(function($) {
     $.extend($.validator.messages, {
-        required: "必选字段",
+        required: "当前选项为空，请填入正确的字段值",
         remote: "请修改当前字段",
         email: "请输入有效的电子邮件地址",
         url: "请输入有效的网址",

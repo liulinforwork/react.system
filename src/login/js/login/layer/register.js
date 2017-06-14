@@ -1,4 +1,4 @@
-/***@author blue @create date 2017-06-14 @info reset.js***/
+/***@author blue @create date 2017-06-14 @info register.js***/
 (function ($,w) {
 
     var wait=60;
@@ -83,7 +83,7 @@
 
                 //验证通过后 的js代码写在这里
                 var data = {
-                    status:0
+                    status:1
                 };
                 switch (data.status){
                     case 0:
@@ -97,7 +97,7 @@
                         });
                         break;
                     case 1:
-                        window.location.href = "../../html/status.html";
+                        window.location.href = "../../html/user/status.html";
                         break;
                     default:
                         break;
@@ -112,13 +112,10 @@
 
     });
 
+
     // 点击通过ajax方式提交表单验证
-    $('.find_confirm').on('click',function (e) {
+    $('.register_sub').on('click',function (e) {
         $('.jsForm').submit();
-    });
-    // 取消
-    $('.find_cancel').on('click',function (e) {
-        window.location.href = '../../html/find.html';
     })
 
 })(jQuery,window);

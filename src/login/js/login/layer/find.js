@@ -1,4 +1,4 @@
-/***@author blue @create date 2017-06-14 @info register.js***/
+/***@author blue @create date 2017-06-14 @info find.js***/
 (function ($,w) {
 
     var wait=60;
@@ -82,27 +82,9 @@
             submitHandler: function() {
 
                 //验证通过后 的js代码写在这里
-                var data = {
-                    status:1
-                };
-                switch (data.status){
-                    case 0:
-
-                        var obj = $('.jsForm').serialize();
-                        console.log(obj);
-
-                        layer.alert('账号无法登录该电脑，请登录绑定的电脑', {
-                            icon: 5,
-                            skin: 'layer-ext-moon'
-                        });
-                        break;
-                    case 1:
-                        window.location.href = "../../html/status.html";
-                        break;
-                    default:
-                        break;
-                }
-
+                var obj = $('.jsForm').serialize();
+                console.log(obj);
+                window.location.href = "../../html/user/reset.html";
             },
             errorPlacement:function(error,element) {
                 error.appendTo(element.parent().parent());
@@ -114,8 +96,12 @@
 
 
     // 点击通过ajax方式提交表单验证
-    $('.register_sub').on('click',function (e) {
+    $('.find_confirm').on('click',function (e) {
         $('.jsForm').submit();
+    });
+    // 取消
+    $('.find_cancel').on('click',function (e) {
+        window.location.href = '../../login.html';
     })
 
 })(jQuery,window);

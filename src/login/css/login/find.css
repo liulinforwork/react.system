@@ -1,30 +1,28 @@
 @charset "utf-8";
-/*@author blue @create date 2017-06-14 @info register.css*/
-
-.register{
+/*@author blue @create date 2017-06-14 @info find.css*/
+.find{
     width: 55%;
     margin: 0 auto;
     margin-top: 30px;
 }
-.register_item{
+.find_item{
     margin: 0 auto;
     min-width: 550px;
 }
-.register_title{
+.find_title{
     border-left: 4px solid #5c5c5c;
     padding-left: 10px;
     color: #5c5c5c;
     margin: 0;
     font-size: 16px;
 }
-.register_wp{
+.find_wp{
     margin-top: 20px;
-    margin-left: 100px;
 }
-.register_wp li{
+.find_wp li{
     margin-bottom: 18px;
 }
-.register_wp label{
+.find_wp label{
     display: inline-block;
     width: 100px;
     height: 26px;
@@ -35,12 +33,7 @@
     margin: 0;
     margin-right: 20px;
 }
-.register_line{
-    display: inline-block;
-    transition: all .3s linear;
-    outline : none
-}
-.register_wp input,.register_wp select{
+.find_wp input,.find_wp select{
     width: 350px;
     height: 26px;
     outline: none;
@@ -53,15 +46,20 @@
     background: none;
     transition: all .2s linear;
 }
-.register_wp select{
+.find_wp select{
     width: 390px;
     height: 38px;
     cursor: pointer;
 }
-.register_wp input:focus{
+.find_wp input:focus{
     border-color: #0099ff;
 }
-.register_icon{
+.find_line{
+    display: inline-block;
+    transition: all .3s linear;
+    outline : none
+}
+.find_icon{
     position: absolute;
     display: inline-block;
     width: 30px;
@@ -69,35 +67,24 @@
     background-position:center;
     background-repeat: no-repeat;
 }
-
+span.user{
+    background-image:url(../../images/login/edit.png);
+}
 span.phone{
-    background-image:url(../images/phone.png);
+    background-image:url(../../images/login/phone.png);
 }
 span.yzm{
-    background-image:url(../images/login-yzm.png);
+    background-image:url(../../images/login/login-yzm.png);
 }
 span.pwd{
-    background-image:url(../images/pwd.png);
+    background-image:url(../../images/login/pwd.png);
 }
 span.pwd--again{
-    background-image:url(../images/pwd.png);
+    background-image:url(../../images/login/pwd.png);
 }
-span.user{
-    background-image:url(../images/edit.png);
-}
-span.industry{
-    background-image:url(../images/industry.png);
-}
-span.region{
-    background-image:url(../images/phone.png);
-}
-select.industry{
-}
-select.region{
-    padding-left: 5px;
-}
-.register_yzm{
-    overflow: hidden;
+input.yzm{
+    width: 144px;
+    padding-right: 100px
 }
 input.sendYzm{
     display: inline-block;
@@ -114,46 +101,39 @@ input.sendYzm{
     cursor: pointer!important;
     transition: none;
 }
-li.register_user{
-    margin-bottom: 6px;
+input.username{
+    padding-left: 10px;
+    width: 370px;
 }
-div.register_sub,.register_text{
-    display:inline-block;
-    width: 392px;
-    text-align: center;
-    padding: 0;
-    margin: 0;
+
+.find_btnWp{
+    width: 100%;
+    height: 40px;
+    margin: 0 auto;
+    /*padding-left: 200px;*/
+    margin-left: 125px;
+    /*padding-left: 100px;*/
+    margin-top: 30px;
 }
-.register_sub{
-    height:46px;
-    line-height:46px;
-    background: #0099FF;
-    color: #eee;
-    font-size:16px;
-    border-radius:4px;
-    cursor: pointer;
-    margin-bottom: 12px;
-}
-.register_text{
-    width: 392px;
-    font-size: 14px;
+.find_btn{
     display: inline-block;
-    text-align: left;
-    vertical-align: top;
-    color: #969696;
+    width: 100px;
+    background-color: #0099ff;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
 }
-.register_sub:hover{
+.find_btn:hover{
     background:#1f82c3;
     color:#fff;
 }
-.register_link{
-    display:inline-block;
-    width: 392px;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    vertical-align: top;
+.find_cancel{
+}
+.find_confirm{
+    margin-left: 60px;
 }
 span.error {
     display: inline-block;
@@ -161,11 +141,15 @@ span.error {
     height: 34px;
     line-height: 34px;
     text-align: left;
-    background: url("../images/Prompt.png") no-repeat left;
+    background: url("../../images/login/Prompt.png") no-repeat left;
     padding-left: 25px;
     margin-left: 10px;
     padding-bottom: 2px;
     font-size: 14px;
     font-weight: bold;
     color: #e13838;
+}
+
+.find_two{
+    display: none;
 }

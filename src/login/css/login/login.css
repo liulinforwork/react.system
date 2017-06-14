@@ -4,7 +4,7 @@
 .main{
     width:100%;
     height:500px;
-    background:url(../images/login-bg.png) no-repeat center center;
+    background:url(../../images/login/login-bg.png) no-repeat center center;
     position:relative;
 }
 .login{
@@ -90,14 +90,14 @@
     background-repeat: no-repeat;
 }
 span.username{
-    background-image:url(../images/phone.png);
+    background-image:url(../../images/login/phone.png);
 }
 span.pwd{
-    background-image:url(../images/pwd.png);
+    background-image:url(../../images/login/pwd.png);
 }
 span.yzm{
     /*width:100px;*/
-    background-image:url(../images/yzm.png);
+    background-image:url(../../images/login/yzm.png);
 }
 .changeYzm{
     display:block;
@@ -107,7 +107,7 @@ span.yzm{
     position:absolute;
     top: 0;
     right: 0;
-    background-image: url(../images/yzm-bg.png);
+    background-image: url(../../images/login/yzm-bg.png);
     border-radius: 2px;
     cursor: pointer;
     padding: 0 20px;
@@ -145,5 +145,6 @@ a#login:hover{
     height: 18px;
     line-height: 18px;
     display: block;
+    /*margin: 2px auto;*/
 }
 
