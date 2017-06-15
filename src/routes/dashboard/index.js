@@ -14,7 +14,8 @@ import { color } from '../../utils'
 // }
 
 function Dashboard ({ dashboard }) {
-  const { weather, sales, quote, numbers,todo, recentSales, comments, completed, browser, cpu, user } = dashboard
+  // const { weather, sales, quote, numbers,todo, recentSales, comments, completed, browser, cpu, user } = dashboard
+  const { numbers,todo } = dashboard;
   const numberCards = numbers.map((item, key) => <Col key={key} lg={6} md={12}>
     <NumberCard {...item} />
   </Col>)

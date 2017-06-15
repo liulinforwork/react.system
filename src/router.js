@@ -25,8 +25,8 @@ const Routers = function ({ history, app }) {
           path: 'dashboard',
           getComponent (nextState, cb) {
             require.ensure([], require => {
-              registerModel(app, require('./models/dashboard'))
-              cb(null, require('./routes/dashboard/'))
+              registerModel(app, require('./models/dashboard'));
+              cb(null, require('./routes/dashboard/'));
             }, 'dashboard')
           },
         },
@@ -237,7 +237,6 @@ const Routers = function ({ history, app }) {
       ],
     },
   ]
-
   return <Router history={history} routes={routes} />
 }
 
