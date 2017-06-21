@@ -32,6 +32,7 @@ const fetch = (options) => {
       }
     }
     url = domin + url
+
   } catch (e) {
     message.error(e.message)
   }
@@ -87,7 +88,7 @@ export default function request (options) {
       }
     }
   }
-
+  console.log(options)
   return fetch(options).then((response) => {
     const { statusText, status } = response
     let data = options.fetchType === 'YQL' ? response.data.query.results.json : response.data

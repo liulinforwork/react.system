@@ -1,156 +1,78 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm } from 'antd'
-import List from './List'
-import Filter from './Filter'
+import { Button,Table,Input } from 'antd'
 import Modal from './Modal'
 
-const User = ({ location, dispatch, user, loading }) => {
-  // const { list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys } = user
-  // const { pageSize } = pagination
+const Request = ({ dispatch, request }) => {
 
-  // const modalProps = {
-  //   item: modalType === 'create' ? {} : currentItem,
-  //   visible: modalVisible,
-  //   maskClosable: false,
-  //   confirmLoading: loading.effects['user/update'],
-  //   // title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
-  //   title: `添加账号`,
-  //   wrapClassName: 'vertical-center-modal',
-  //   onOk (data) {
-  //     dispatch({
-  //       type: `user/${modalType}`,
-  //       payload: data,
-  //     })
-  //   },
-  //   onCancel () {
-  //     dispatch({
-  //       type: 'user/hideModal',
-  //     })
-  //   },
-  // }
-  //
-  // const listProps = {
-  //   dataSource: list,
-  //   loading: loading.effects['user/query'],
-  //   pagination,
-  //   location,
-  //   isMotion,
-  //   onChange (page) {
-  //     const { query, pathname } = location
-  //     dispatch(routerRedux.push({
-  //       pathname,
-  //       query: {
-  //         ...query,
-  //         page: page.current,
-  //         pageSize: page.pageSize,
-  //       },
-  //     }))
-  //   },
-  //   onDeleteItem (id) {
-  //     dispatch({
-  //       type: 'user/delete',
-  //       payload: id,
-  //     })
-  //   },
-  //   onEditItem (item) {
-  //     dispatch({
-  //       type: 'user/showModal',
-  //       payload: {
-  //         modalType: 'update',
-  //         currentItem: item,
-  //       },
-  //     })
-  //   },
-  //   // rowSelection: {
-  //   //   selectedRowKeys,
-  //   //   onChange: (keys) => {
-  //   //     dispatch({
-  //   //       type: 'user/updateState',
-  //   //       payload: {
-  //   //         selectedRowKeys: keys,
-  //   //       },
-  //   //     })
-  //   //   },
-  //   // },
-  // }
-  //
-  const filterProps = {
-    // isMotion,
-    filter: {
-      ...location.query,
+  const { visible } = request;
+
+  const onAdd = () => {
+    dispatch({
+      type: 'request/showModal',
+      // payload: {
+      //   name: '龙大侠的测试被创建帐号'
+      // }
+    })
+  };
+
+  const columns = [
+    {
+      title: '编号',
+      dataIndex: 'name',
+      key: 'name'
     },
-    // onFilterChange (value) {
-    //   dispatch(routerRedux.push({
-    //     pathname: location.pathname,
-    //     query: {
-    //       ...value,
-    //       page: 1,
-    //       pageSize,
-    //     },
-    //   }))
-    // },
-    // onSearch (fieldsValue) {
-    //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-    //     pathname: '/user',
-    //     query: {
-    //       field: fieldsValue.field,
-    //       keyword: fieldsValue.keyword,
-    //     },
-    //   })) : dispatch(routerRedux.push({
-    //     pathname: '/user',
-    //   }))
-    // },
-    onAdd () {
+    {
+      title: '内容',
+      dataIndex: 'nickName',
+      key: 'nickName'
+    },
+    {
+      title: '操作',
+      key: 'operation',
+      width: 100
+    }
+  ];
+
+  const styleObj = {
+    "margin":"20px auto"
+  };
+
+  const modalProps = {
+    title: "创建账户",
+    okText: "提交",
+    visible: visible,
+    onOk(data){
+      // console.log(data);
       dispatch({
-        type: 'user/showModal',
-        payload: {
-          modalType: 'create',
-        },
+        type:'request/hideModal'
       })
     },
-    // switchIsMotion () {
-    //   dispatch({ type: 'user/switchIsMotion' })
-    // },
-  }
-
-  // const handleDeleteItems = () => {
-  //   dispatch({
-  //     type: 'user/multiDelete',
-  //     payload: {
-  //       ids: selectedRowKeys,
-  //     },
-  //   })
-  // }
+    onCancel(data){
+      // console.log(data);
+      dispatch({
+        type:'request/hideModal'
+      })
+    }
+  };
 
   return (
     <div className="content-inner">
-      <Filter {...filterProps} />
-
+      <Button style={styleObj} type="primary" onClick={onAdd}>创建账户</Button>
+      <Table
+        bordered
+        columns={columns}
+        simple
+      />
+      {visible && <Modal {...modalProps}></Modal>}
     </div>
   )
-}
+};
 
-/*{
- selectedRowKeys.length > 0 &&
- <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
- <Col>
- {`Selected ${selectedRowKeys.length} items `}
- <Popconfirm title={'Are you sure delete these items?'} placement="left" onConfirm={handleDeleteItems}>
- <Button type="primary" size="large" style={{ marginLeft: 8 }}>Remove</Button>
- </Popconfirm>
- </Col>
- </Row>
- }*/
-// <List {...listProps} />
-// {modalVisible && <Modal {...modalProps} />}
-User.propTypes = {
-  user: PropTypes.object,
-  location: PropTypes.object,
-  dispatch: PropTypes.func,
-  loading: PropTypes.object,
-}
+Request.propTypes = {
+  request: PropTypes.object,
+  dispatch: PropTypes.func
+};
 
-export default connect(({ user, loading }) => ({ user, loading }))(User)
+export default connect(({ request }) => ({ request }))(Request)

@@ -50,41 +50,41 @@ module.exports = [
     router: '/quick',
   },
 
-  {
-    id:8,
-    bpid: 1,
-    name: '项目管理',
-    icon: 'setting',
-    // router: '/house',
-  },
-  {
-    id:81,
-    bpid: 8,
-    mpid: 8,
-    name: '创建项目',
-    router: '/house/create',
-  },
-  {
-    id:82,
-    bpid: 8,
-    mpid: 8,
-    name: '审核项目',
-    router: '/house/review',
-  },
-  {
-    id:83,
-    bpid: 8,
-    mpid: 8,
-    name: '公开请求',
-    router: '/house/open',
-  },
-  {
-    id:84,
-    bpid: 8,
-    mpid: 8,
-    name: '项目详情',
-    router: '/house/detail',
-  },
+  // {
+  //   id:8,
+  //   bpid: 1,
+  //   name: '项目管理',
+  //   icon: 'setting',
+  //   // router: '/house',
+  // },
+  // {
+  //   id:81,
+  //   bpid: 8,
+  //   mpid: 8,
+  //   name: '创建项目',
+  //   router: '/house/create',
+  // },
+  // {
+  //   id:82,
+  //   bpid: 8,
+  //   mpid: 8,
+  //   name: '审核项目',
+  //   router: '/house/review',
+  // },
+  // {
+  //   id:83,
+  //   bpid: 8,
+  //   mpid: 8,
+  //   name: '公开请求',
+  //   router: '/house/open',
+  // },
+  // {
+  //   id:84,
+  //   bpid: 8,
+  //   mpid: 8,
+  //   name: '项目详情',
+  //   router: '/house/detail',
+  // },
 
 ]
 

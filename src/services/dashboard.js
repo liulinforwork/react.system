@@ -1,6 +1,6 @@
 import { request, config } from '../utils'
 const { api } = config
-const { dashboard } = api
+const { addShortcutWords } = api
 
 // export async function myCity (params) {
 //   return request({
@@ -18,8 +18,8 @@ const { dashboard } = api
 
 export async function query (params) {
   return request({
-    url: dashboard,
-    method: 'get',
+    url: addShortcutWords,
+    method: 'post',
     data: params,
   })
 }

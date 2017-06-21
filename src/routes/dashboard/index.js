@@ -6,16 +6,67 @@ import { NumberCard, Quote, Sales, Weather, RecentSales, Comments, Completed, Br
 import styles from './index.less'
 import { color } from '../../utils'
 
-// const bodyStyle = {
-//   bodyStyle: {
-//     height: 432,
-//     background: '#fff',
-//   },
-// }
+
+
+
+
+// const { weather, sales, quote, numbers,todo, recentSales, comments, completed, browser, cpu, user } = dashboard
+// const { numbers,todo } = dashboard;
 
 function Dashboard ({ dashboard }) {
-  // const { weather, sales, quote, numbers,todo, recentSales, comments, completed, browser, cpu, user } = dashboard
-  const { numbers,todo } = dashboard;
+
+
+    const numbers =[
+        {
+            icon: 'pay-circle-o',
+            color: color.green,
+            title: '创建项目',
+            number: 2781,
+        }, {
+            icon: 'team',
+            color: color.blue,
+            title: '人员管理',
+            number: 3241,
+        }, {
+            icon: 'message',
+            color: color.purple,
+            title: '项目管理',
+            number: 253,
+        }, {
+            icon: 'shopping-cart',
+            color: color.red,
+            title: '我的账号',
+            number: 4324,
+        }, {
+            icon: 'shopping-cart',
+            color: color.red,
+            title: '账号管理',
+            number: 2655,
+        }, {
+            icon: 'shopping-cart',
+            color: color.red,
+            title: '注册',
+            number: 9989,
+        },{
+            icon: 'shopping-cart',
+            color: color.red,
+            title: '注销登录',
+            number: 9989,
+        },
+    ];
+    const todo =[
+        {
+            icon: 'pay-circle-o',
+            color: color.green,
+            title: '待审项目',
+            number: 99,
+        }, {
+            icon: 'team',
+            color: color.blue,
+            title: '公开请求',
+            number: 0,
+        }
+    ];
   const numberCards = numbers.map((item, key) => <Col key={key} lg={6} md={12}>
     <NumberCard {...item} />
   </Col>)
@@ -23,6 +74,9 @@ function Dashboard ({ dashboard }) {
     <NumberCard {...item} />
   </Col>)
 
+
+    console.log(numberCards)
+    console.log(todoCards)
   return (
     <Row gutter={24}>
       <p className={styles.dash_margin}>代办事项</p>

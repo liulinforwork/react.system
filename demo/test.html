@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>test</title>
+  <script type="text/javascript">
+    var SOA_V_locator = null;
+    var SOA_V_service = null;
+    var SOA_V_loginenable = false;
+    var SOA_V_NETINFO = null;
+    var SOA_V_HOSTINFO = null;
+    try{
+      SOA_V_locator = new ActiveXObject ("WbemScripting.SWbemLocator");
+      SOA_V_service = SOA_V_locator.ConnectServer(".");
+    }catch(e){
+      //alert("ErrInfoIS:"+e)
+    }finally{
+    }
+    //获取网络连接信息
+    function SOA_F_ipinfo(firstIf){
+      if(SOA_V_service ==null){
+        SOA_V_loginenable = false;
+        SOA_F_alert("IE浏览器对SOA系统的支持比较好，请按照如下步骤设置IE浏览器后才能更好的访问本系统。<br>1.工具->Internet选项->进入选项卡的《安全》项->选中受信任站点，点击站点按钮，把http://soa.yundasys.com添加到受信任站点，点击关闭按钮。<br>2.工具->Internet选项->进入选项卡的《安全》项->选中自定义级别按钮，找到《ActiveX控件和插件》下的《对未标记为可安全执行脚本的ActiveX控件初始化并执行脚本》项，选中《启用》即可，点击确定按钮。3.查看IE设置帮助</font></a>",firstIf);
+        return;
+      }else{
+        SOA_V_loginenable = true;
+      }
+    }
+
+    function SOA_F_alert(text_,firstIf){
+      if(firstIf){
+        var alertFram = document.createElement("DIV");
+        alertFram.id="alertFram";
+        alertFram.style.position = "absolute";
+        alertFram.style.left = "50%";
+        alertFram.style.top = "50%";
+        alertFram.style.marginLeft = "-220px";
+        alertFram.style.marginTop = "-100px";
+        alertFram.style.width = "600px";
+        alertFram.style.height = "300px";
+        alertFram.style.background = "#fff";
+        text_ = "<div>IE浏览器对SOA系统的支持比较好，请按照如下步骤设置IE浏览器后才能更好的访问本系统。<br>1.工具->Internet选项->进入选项卡的《安全》项->选中受信任站点，点击站点按钮，把http://xxxx添加到受信任站点，点击关闭按钮。<br>2.工具->Internet选项->进入选项卡的《安全》项->选中自定义级别按钮，找到《ActiveX控件和插件》下的《对未标记为可安全执行脚本的ActiveX控件初始化并执行脚本》项，选中《启用》即可，点击确定按钮。<div>";
+        strHtml = "<table boder='0' height='100%' width='100%' cellspacing='0' cellpadding='0'><tbody>";
+        strHtml +="<tr><td style='background:#ffcc00;' width='100%' height='20px'>[系统提示]</td></tr>";
+
+        strHtml +="<tr><td style='background:#FDEEF4;' height='8px' align='center'><input type='button' value='确 定' onclick='SOA_F_doOk()'</td></tr></tbody></table>";
+        alertFram.innerHTML = strHtml;
+        document.getElementsByTagName("body")[0].appendChild(alertFram);
+      }else{
+        $id("alertFram").style.display = "";
+      }
+    }
+    function setClientInfo(){
+      SOA_V_NETINFO = SOA_V_service.ExecQuery("SELECT * FROM Win32_NetworkAdapterConfiguration Where IPEnabled=TRUE"); //获取网络连接信息
+      SOA_V_HOSTINFO = SOA_V_service.ExecQuery("SELECT * FROM Win32_Processor"); ////CPU 信息
+      alert( getUserAgent()+getIpAddr()+getMacAddr()+getHost()); //浏览器以及版本   var user_Agent_Version = getUserAgentVersion();//浏览器版本
+//alert("浏览器以及版本:"+getUserAgent()+","+getUserAgentVersion()+",IP:"+getIpAddr()+",MAC地址:"+getMacAddr()+",计算机名称:"+getHost());
+    }
+    function setClientInfoDis(){
+      setClientInfo();
+      if(SOA_V_NETINFO != null){
+        alert(getUserAgent());
+      }else{
+        alert("222222");
+      }
+    }
+    //获取浏览器
+    function getUserAgent(){
+      //if(isIe()){
+      //User_Agent = "IE浏览器";
+      //}else if(isFireFox()){
+      //User_Agent = "火狐浏览器";
+      //}
+      return  navigator.userAgent;   //包含以下属性中所有或一部分的字符串：appCodeName,appName,appVersion,language,platform
+    }
+    //获取浏览器版本
+    function getUserAgentVersion(){
+      var arrayObj = new Array();
+      arrayObj = navigator.userAgent.split(";");
+      return arrayObj[1];
+    }
+    //获取IP地址
+    function getIpAddr(){
+      var er = new Enumerator(SOA_V_NETINFO);
+      var cmpipStr ="";
+      for (;!er.atEnd();er.moveNext()){
+        var p = er.item();
+        var cmp_Ip = p.IPAddress(0);
+        cmpipStr+=cmp_Ip+",";
+      }
+      //把字符串最后一个逗号替换为空格
+      var str = cmpipStr.replace(/([^,]*),([^,]*)$/g, '$1$2');
+      return str;
+    }
+    //获取MAC地址
+    function getMacAddr(){
+      var er = new Enumerator(SOA_V_NETINFO);
+      var cmpmacStr ="";
+      for (;!er.atEnd();er.moveNext ()){
+        var p = er.item();
+        var cmp_Mac = p.MACAddress;
+        cmpmacStr += cmp_Mac+",";
+      }
+      //把字符串最后一个逗号替换为空格
+      var str = cmpmacStr.replace(/([^,]*),([^,]*)$/g, '$1$2');
+      return str;
+    }
+    //获取计算机名称
+    function getHost(){
+      var er2 = new Enumerator(SOA_V_HOSTINFO);
+      for (;!er2.atEnd();er2.moveNext()) {
+        var p = er2.item ();
+        var cmp_Host = p.SystemName;
+      }
+      return cmp_Host;
+    }
+    //判断是否IE
+    function isIe(){
+      var i=navigator.userAgent.toLowerCase().indexOf("msie");
+      return i>=0;
+    }
+    //判断是否firefox
+    function isFireFox(){
+      var i=navigator.userAgent.toLowerCase().indexOf("firefox");
+      return i>=0;
+    }
+  </script>
+</head>
+<body marginheight="0" marginwidth="0">
+<a href="javascript:setClientInfoDis();" style=" text-decoration:none;color:red">test</a></div></td>
+
+</body>
+<script>
+  setClientInfoDis();
+</script>
+</html>
