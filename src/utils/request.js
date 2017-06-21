@@ -9,6 +9,7 @@ import { message } from 'antd'
 axios.defaults.baseURL = baseURL
 
 const fetch = (options) => {
+
   let {
     method = 'get',
     data,
@@ -33,6 +34,7 @@ const fetch = (options) => {
     }
     url = domin + url
 
+
   } catch (e) {
     message.error(e.message)
   }
@@ -54,7 +56,6 @@ const fetch = (options) => {
     url = `http://query.yahooapis.com/v1/public/yql?q=select * from json where url='${options.url}?${encodeURIComponent(qs.stringify(options.data))}'&format=json`
     data = null
   }
-
   switch (method.toLowerCase()) {
     case 'get':
       return axios.get(url, {
@@ -65,7 +66,7 @@ const fetch = (options) => {
         data: cloneData,
       })
     case 'post':
-      return axios.post(url, cloneData)
+      return axios.post(url, JSON.stringify(cloneData))
     case 'put':
       return axios.put(url, cloneData)
     case 'patch':
@@ -76,6 +77,7 @@ const fetch = (options) => {
 }
 
 export default function request (options) {
+
   if (options.url && options.url.indexOf('//') > -1) {
     const origin = `${options.url.split('//')[0]}//${options.url.split('//')[1].split('/')[0]}`
     if (window.location.origin !== origin) {
@@ -88,7 +90,7 @@ export default function request (options) {
       }
     }
   }
-  console.log(options)
+  // console.log(options)
   return fetch(options).then((response) => {
     const { statusText, status } = response
     let data = options.fetchType === 'YQL' ? response.data.query.results.json : response.data
