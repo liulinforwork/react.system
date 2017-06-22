@@ -48,12 +48,12 @@ const Quick = ({ dispatch, quick }) => {
       key: 'operation',
       width: 100,
       render: () =>
-      <div>
-        <span onClick={onDelete}>删除</span>
-        &nbsp;
-        &nbsp;
-        <span onClick={onModify}>编辑</span>
-      </div>
+        <div>
+          <span onClick={onDelete}>删除</span>
+          &nbsp;
+          &nbsp;
+          <span onClick={onModify}>编辑</span>
+        </div>
     }
   ];
 
@@ -62,8 +62,8 @@ const Quick = ({ dispatch, quick }) => {
   };
 
   const modalProps = {
-    title: "添加快捷语",
-    okText: "添加",
+    title: "添加人员",
+    okText: "下一步",
     visible: visible,
     onOk(data){
       // console.log(data);
@@ -80,9 +80,8 @@ const Quick = ({ dispatch, quick }) => {
   };
 
   return (
-
     <div className="content-inner">
-      <Button style={styleObj} type="primary" onClick={onAdd}>添加快捷语</Button>
+      <Button style={styleObj} type="primary" onClick={onAdd}>添加人员</Button>
       <Table
         bordered
         columns={columns}

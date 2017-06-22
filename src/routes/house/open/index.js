@@ -1,22 +1,59 @@
 import React from 'react'
 // import { DataTable } from '../../../components'
-// import { Table, Row, Col, Card, Select } from 'antd'
+import { Table, Row, Col, Card, Select } from 'antd'
 
 class DataTablePage extends React.Component {
   // constructor (props) {
   //   super(props)
-  // this.state = { filterCase: {
-  //   gender: '',
-  // } }
+    // this.state = { filterCase: {
+    //   gender: '',
+    // } }
   // }
 
   render () {
     // const { filterCase } = this.state
-
+    const columns = [
+      {
+        title: '编号',
+        dataIndex: 'name',
+        key: 'name'
+        // render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
+      },
+      {
+        title: '项目名称',
+        dataIndex: 'nickName',
+        key: 'nickName'
+      },
+      {
+        title: '位置',
+        dataIndex: 'nickName',
+        key: 'nickName'
+      },
+      {
+        title: '项目阶段',
+        dataIndex: 'nickName',
+        key: 'nickName'
+      },
+      {
+        title: '操作',
+        key: 'operation',
+        width: 100,
+        // render: (text, record) => {
+        //   return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: '绑定' }, { key: '2', name: '解除绑定' },{ key: '3', name: '删除' }]} />
+        // }
+      }
+    ];
     return (<div className="content-inner">
-      <p>离职人员项目管理</p>
-      <div>人员1</div>
-      <div>人员2</div>
+      <Table
+        // {...tableProps}
+        // className={classnames({ [styles.table]: true, [styles.motion]: isMotion })}
+        bordered
+        // scroll={{ x: 1250 }}
+        columns={columns}
+        simple
+        // rowKey={record => record.id}
+        // getBodyWrapper={getBodyWrapper}
+      />
     </div>)
   }
 }

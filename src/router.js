@@ -51,6 +51,18 @@ const Routers = function ({ history, app }) {
         //   },
         // },
 
+        // 人员管理
+        {
+          path: 'user',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/user'));
+              cb(null, require('./routes/user'))
+            }, 'user')
+          },
+        },
+
+
         //监理
         {
           path: 'supervisor',
@@ -71,7 +83,7 @@ const Routers = function ({ history, app }) {
         //     }, 'user-detail')
         //   },
         // },
-        //商品房
+        // //商品房
         // {
         //   path: 'house',
         //   getComponent (nextState, cb) {
@@ -82,47 +94,47 @@ const Routers = function ({ history, app }) {
         //   },
         // },
 
-        // //商品房创建
-        // {
-        //   path: 'house/create',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       // registerModel(app, require('./models/login'))
-        //       cb(null, require('./routes/house/create'))
-        //     }, 'login')
-        //   },
-        // },
-        //
-        // //商品房审核
-        // {
-        //   path: 'house/review',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       // registerModel(app, require('./models/login'))
-        //       cb(null, require('./routes/house/review'))
-        //     }, 'login')
-        //   },
-        // },
-        // //商品房详情
-        // {
-        //   path: 'house/detail',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       // registerModel(app, require('./models/login'))
-        //       cb(null, require('./routes/house/detail'))
-        //     }, 'login')
-        //   },
-        // },
-        // //商品房详情
-        // {
-        //   path: 'house/open',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       // registerModel(app, require('./models/login'))
-        //       cb(null, require('./routes/house/open'))
-        //     }, 'login')
-        //   },
-        // },
+        //商品房创建
+        {
+          path: 'house/create',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              // registerModel(app, require('./models/login'))
+              cb(null, require('./routes/house/create'))
+            }, 'login')
+          },
+        },
+
+        //商品房审核
+        {
+          path: 'house/review',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              // registerModel(app, require('./models/login'))
+              cb(null, require('./routes/house/review'))
+            }, 'login')
+          },
+        },
+        //商品房详情
+        {
+          path: 'house/detail',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              // registerModel(app, require('./models/login'))
+              cb(null, require('./routes/house/detail'))
+            }, 'login')
+          },
+        },
+        //商品房详情
+        {
+          path: 'house/open',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              // registerModel(app, require('./models/login'))
+              cb(null, require('./routes/house/open'))
+            }, 'login')
+          },
+        },
 
         //快捷语管理
         {

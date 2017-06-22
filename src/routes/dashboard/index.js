@@ -75,8 +75,8 @@ function Dashboard ({ dashboard }) {
   </Col>)
 
 
-    console.log(numberCards)
-    console.log(todoCards)
+    // console.log(numberCards)
+    // console.log(todoCards)
   return (
     <Row gutter={24}>
       <p className={styles.dash_margin}>代办事项</p>

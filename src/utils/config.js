@@ -12,6 +12,7 @@ module.exports = {
   CORS: ['http://localhost:7000'],
   openPages: ['/login'],
   apiPrefix: '/api/v1',
+  version:"1.0.0",
   api: {
     userLogin: '/user/login',
     userLogout: '/user/logout',

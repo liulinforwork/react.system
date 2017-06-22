@@ -7,14 +7,16 @@ export default {
   namespace: 'quick',
   state: {
     visible: false,
-    // list: [],
+    list: [],
     // total: null,
   },
 
   effects: {
     *fetch({ payload: { name } }, { call, put }) {
       const { data, headers } = yield call(usersService.query, { name });
-      // yield put({ type: 'save', payload: { data, total: headers['x-total-count'] } });
+      // console.log(data);
+      yield put({ type: 'save', payload: { data} });
+      // const list = yield select(state=>state.list);
     },
   },
   subscriptions: {
@@ -22,7 +24,7 @@ export default {
       return history.listen(({ pathname, query }) => {
         if (pathname === '/quick') {
           dispatch({ type: 'fetch', payload: {
-            name: '龙大侠的测试帐号'
+            name: ''
           } });
         }
       });
@@ -30,9 +32,10 @@ export default {
   },
 
   reducers: {
-    // save(state, { payload: { data: list, total } }) {
-    //   return { ...state, list, total };
-    // },
+    save(state, { payload:quick}) {
+      const list = quick.data.pageSet;
+      return {...state,list}
+    },
 
     showModal (state, { payload }) {
       return { ...state, ...payload, visible: true }

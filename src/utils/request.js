@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import { YQL, CORS, baseURL } from './config'
+import { YQL, CORS, baseURL, version} from './config'
 import jsonp from 'jsonp'
 import lodash from 'lodash'
 import pathToRegexp from 'path-to-regexp'
@@ -56,6 +56,33 @@ const fetch = (options) => {
     url = `http://query.yahooapis.com/v1/public/yql?q=select * from json where url='${options.url}?${encodeURIComponent(qs.stringify(options.data))}'&format=json`
     data = null
   }
+
+  const befor = function (obj) {
+
+    // let _timestamp = ;
+    // let _sign = "";
+
+    // var cookies = $inject.get("Cookies"),
+    //   tool = $inject.get("Tools"),
+    // var _userId = cookies.get("userId");
+    // if(tool.isEmpty(_userId)){
+    //   alert("用户过期！");
+    //   return false;
+    // };
+
+    let params = {
+      userId: 8,
+      timestamp: new Date().getTime(),
+      sign: "oI10aB2NvcPy5AA6",
+      para: JSON.stringify(obj),
+      version: version,
+      terminal: 2,
+      h5: 0
+    };
+    return qs.stringify(params);
+  }
+
+
   switch (method.toLowerCase()) {
     case 'get':
       return axios.get(url, {
@@ -66,7 +93,9 @@ const fetch = (options) => {
         data: cloneData,
       })
     case 'post':
-      return axios.post(url, JSON.stringify(cloneData))
+      return axios.post(url, befor(cloneData),{
+        withCredentials:true
+    })
     case 'put':
       return axios.put(url, cloneData)
     case 'patch':
