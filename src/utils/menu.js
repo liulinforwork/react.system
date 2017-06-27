@@ -5,9 +5,15 @@ module.exports = [
     name: '首页',
     router: '/dashboard',
   },
-
   {
     id: 2,
+    bpid: 1,
+    name: '账号管理',
+    icon: 'api',
+    router: '/request',
+  },
+  {
+    id: 3,
     bpid: 1,
     name: '人员管理',
     icon: 'user',
@@ -28,13 +34,7 @@ module.exports = [
   //   name: '离职人员项目',
   //   router: '/user/quit'
   // },
-  {
-    id: 3,
-    bpid: 1,
-    name: '账号管理',
-    icon: 'api',
-    router: '/request',
-  },
+
   {
     id:4,
     bpid: 1,
@@ -83,6 +83,51 @@ module.exports = [
     mpid: 8,
     name: '项目详情',
     router: '/house/detail',
+  },
+
+  {
+    id:9,
+    bpid: 1,
+    name: '统计图表',
+    icon: 'api',
+  },
+  {
+    id:91,
+    bpid: 19,
+    mpid: 9,
+    name: '柱状图',
+  },
+  {
+    id:92,
+    bpid: 9,
+    mpid: 9,
+    name: '饼状图',
+  },
+  {
+    id:93,
+    bpid: 9,
+    mpid: 9,
+    name: '折线图',
+
+  },
+
+  {
+    id:10,
+    bpid: 1,
+    name: '系统设置',
+    icon: 'setting',
+  },
+  {
+    id:101,
+    bpid: 10,
+    mpid: 10,
+    name: '全局设置',
+  },
+  {
+    id:102,
+    bpid: 10,
+    mpid: 10,
+    name: '个人设置',
   },
 
 ]

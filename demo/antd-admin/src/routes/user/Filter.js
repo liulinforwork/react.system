@@ -104,18 +104,19 @@ const Filter = ({
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div >
             <Button type="primary" size="large" className="margin-right" onClick={handleSubmit}>Search</Button>
-            <Button size="large" onClick={handleReset}>Reset</Button>
+            <Button size="large" onClick={handleReset}>重置</Button>
           </div>
           <div>
-            <Switch style={{ marginRight: 16 }} size="large" defaultChecked={isMotion} onChange={switchIsMotion} checkedChildren={'Motion'} unCheckedChildren={'Motion'} />
-            <Button size="large" type="ghost" onClick={onAdd}>Create</Button>
+            <Button size="large" onClick={onAdd}>创建</Button>
           </div>
         </div>
       </Col>
     </Row>
   )
 }
-
+/*
+ <Switch style={{ marginRight: 16 }} size="large" defaultChecked={isMotion} onChange={switchIsMotion} checkedChildren={'Motion'} unCheckedChildren={'Motion'} />
+ */
 Filter.propTypes = {
   onAdd: PropTypes.func,
   isMotion: PropTypes.bool,

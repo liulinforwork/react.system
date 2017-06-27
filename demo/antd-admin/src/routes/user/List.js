@@ -11,6 +11,8 @@ const confirm = Modal.confirm
 
 const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) => {
   const handleMenuClick = (record, e) => {
+
+    console.log(record)
     if (e.key === '1') {
       onEditItem(record)
     } else if (e.key === '2') {

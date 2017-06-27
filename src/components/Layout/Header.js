@@ -31,17 +31,21 @@ const Header = ({ user, logout, switchSider, siderFold, isNavbar, menuPopoverVis
         </div>}
       <div className={styles.rightWarpper}>
         <div className={styles.button}>
-          <Icon type="mail" />
+          <Icon type="mail" />&nbsp;信息
         </div>
         <Menu mode="horizontal" onClick={handleClickMenu}>
           <SubMenu style={{
             float: 'right',
           }} title={< span > <Icon type="user" />
-            {user.username} </span>}
+            {user.username}司马懿之大军师联盟</span>}
           >
-            <Menu.Item key="logout">
-              Sign out
+            <Menu.Item key="pwd">
+              修改密码
             </Menu.Item>
+            <Menu.Item key="logout">
+              退出登录
+            </Menu.Item>
+
           </SubMenu>
         </Menu>
       </div>

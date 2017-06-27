@@ -12,9 +12,6 @@ const Quick = ({ dispatch, quick }) => {
   const onAdd = () => {
     dispatch({
       type: 'quick/showModal',
-      // payload: {
-      //   name: '龙大侠的测试被创建帐号'
-      // }
     })
   };
 
@@ -66,13 +63,11 @@ const Quick = ({ dispatch, quick }) => {
     okText: "添加",
     visible: visible,
     onOk(data){
-      // console.log(data);
       dispatch({
         type:'quick/hideModal'
       })
     },
     onCancel(data){
-      // console.log(data);
       dispatch({
         type:'quick/hideModal'
       })

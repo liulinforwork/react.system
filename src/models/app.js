@@ -17,7 +17,7 @@ export default {
   subscriptions: {
 
     setup ({ dispatch }) {
-      dispatch({ type: 'query' })
+      // dispatch({ type: 'query' })
       let tid
       window.onresize = () => {
         clearTimeout(tid)

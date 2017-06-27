@@ -3,20 +3,20 @@ import PropTypes from 'prop-types'
 import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
 import { Row, Col, Button, Popconfirm } from 'antd'
-// import List from './List'
-// import Filter from './Filter'
+import List from './List'
+import Filter from './Filter'
 import Modal from './Modal'
 
 const User = ({ location, dispatch, user, loading }) => {
   const { list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys } = user
-  // const { pageSize } = pagination
+  const { pageSize } = pagination
 
   const modalProps = {
     item: modalType === 'create' ? {} : currentItem,
     visible: modalVisible,
     maskClosable: false,
     confirmLoading: loading.effects['user/update'],
-    title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
+    title: `${modalType === 'create' ? '创建用户' : '更新用户'}`,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
       dispatch({
@@ -31,123 +31,116 @@ const User = ({ location, dispatch, user, loading }) => {
     },
   }
 
-  // const listProps = {
-  //   dataSource: list,
-  //   loading: loading.effects['user/query'],
-  //   pagination,
-  //   location,
-  //   isMotion,
-  //   onChange (page) {
-  //     const { query, pathname } = location
-  //     dispatch(routerRedux.push({
-  //       pathname,
-  //       query: {
-  //         ...query,
-  //         page: page.current,
-  //         pageSize: page.pageSize,
-  //       },
-  //     }))
-  //   },
-  //   onDeleteItem (id) {
-  //     dispatch({
-  //       type: 'user/delete',
-  //       payload: id,
-  //     })
-  //   },
-  //   onEditItem (item) {
-  //     dispatch({
-  //       type: 'user/showModal',
-  //       payload: {
-  //         modalType: 'update',
-  //         currentItem: item,
-  //       },
-  //     })
-  //   },
-  //   rowSelection: {
-  //     selectedRowKeys,
-  //     onChange: (keys) => {
-  //       dispatch({
-  //         type: 'user/updateState',
-  //         payload: {
-  //           selectedRowKeys: keys,
-  //         },
-  //       })
-  //     },
-  //   },
-  // }
-  //
-  // const filterProps = {
-  //   isMotion,
-  //   filter: {
-  //     ...location.query,
-  //   },
-  //   onFilterChange (value) {
-  //     dispatch(routerRedux.push({
-  //       pathname: location.pathname,
-  //       query: {
-  //         ...value,
-  //         page: 1,
-  //         pageSize,
-  //       },
-  //     }))
-  //   },
-  //   onSearch (fieldsValue) {
-  //     fieldsValue.keyword.length ? dispatch(routerRedux.push({
-  //       pathname: '/user',
-  //       query: {
-  //         field: fieldsValue.field,
-  //         keyword: fieldsValue.keyword,
-  //       },
-  //     })) : dispatch(routerRedux.push({
-  //       pathname: '/user',
-  //     }))
-  //   },
-  //   onAdd () {
-  //     dispatch({
-  //       type: 'user/showModal',
-  //       payload: {
-  //         modalType: 'create',
-  //       },
-  //     })
-  //   },
-  //   switchIsMotion () {
-  //     dispatch({ type: 'user/switchIsMotion' })
-  //   },
-  // }
+  const listProps = {
+    dataSource: list,
+    loading: loading.effects['user/query'],
+    pagination,
+    location,
+    isMotion,
+    onChange (page) {
+      const { query, pathname } = location
+      dispatch(routerRedux.push({
+        pathname,
+        query: {
+          ...query,
+          page: page.current,
+          pageSize: page.pageSize,
+        },
+      }))
+    },
+    onDeleteItem (id) {
+      dispatch({
+        type: 'user/delete',
+        payload: id,
+      })
+    },
+    onEditItem (item) {
 
-  const onAdd  =() => {
-    console.log(12312)
+      console.log(item)
       dispatch({
         type: 'user/showModal',
         payload: {
-          modalType: 'create'
-        }
+          modalType: 'update',
+          currentItem: item,
+        },
       })
+    },
+    rowSelection: {
+      selectedRowKeys,
+      onChange: (keys) => {
+        dispatch({
+          type: 'user/updateState',
+          payload: {
+            selectedRowKeys: keys,
+          },
+        })
+      },
+    },
   }
-  // const handleDeleteItems = () => {
-  //   dispatch({
-  //     type: 'user/multiDelete',
-  //     payload: {
-  //       ids: selectedRowKeys,
-  //     },
-  //   })
-  // }
-  // <Filter {...filterProps} />
-  // <List {...listProps} />
+
+  const filterProps = {
+    isMotion,
+    filter: {
+      ...location.query,
+    },
+    onFilterChange (value) {
+      dispatch(routerRedux.push({
+        pathname: location.pathname,
+        query: {
+          ...value,
+          page: 1,
+          pageSize,
+        },
+      }))
+    },
+    onSearch (fieldsValue) {
+      fieldsValue.keyword.length ? dispatch(routerRedux.push({
+        pathname: '/user',
+        query: {
+          field: fieldsValue.field,
+          keyword: fieldsValue.keyword,
+        },
+      })) : dispatch(routerRedux.push({
+        pathname: '/user',
+      }))
+    },
+    onAdd () {
+      dispatch({
+        type: 'user/showModal',
+        payload: {
+          modalType: 'create',
+        },
+      })
+    },
+    switchIsMotion () {
+      dispatch({ type: 'user/switchIsMotion' })
+    },
+  }
+
+  const handleDeleteItems = () => {
+    dispatch({
+      type: 'user/multiDelete',
+      payload: {
+        ids: selectedRowKeys,
+      },
+    })
+  }
+
   return (
     <div className="content-inner">
-      <h3 onClick={onAdd}>创建</h3>
-      //** {
-      //    selectedRowKeys.length > 0 &&
-      //      <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
-      //        <Col>
-      //          {`Selected ${selectedRowKeys.length} items `}
-      //          <Popconfirm title={'Are you sure delete these items?'} placement="left" onConfirm={handleDeleteItems}>
-      //            <Button type="primary" size="large" style={{ marginLeft: 8 }}>Remove</Button>
-      //          </Popconfirm>
-      //        </Col>
-      //      </Row>
-       }*/
+      <Filter {...filterProps} />
+      <List {...listProps} />
+      {
+           selectedRowKeys.length > 0 &&
+             <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
+               <Col>
+                 {`Selected ${selectedRowKeys.length} items `}
+                 <Popconfirm title={'Are you sure delete these items?'} placement="left" onConfirm={handleDeleteItems}>
+                    <Button type="primary" size="large" style={{ marginLeft: 8 }}>Remove</Button>
+                  </Popconfirm>
+               </Col>
+              </Row>
+      }
 
       {modalVisible && <Modal {...modalProps} />}
     </div>

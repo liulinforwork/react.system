@@ -12,9 +12,9 @@ export default {
     *login ({
       payload,
     }, { put, call }) {
-      yield put({ type: 'showLoginLoading' })
-      const data = yield call(login, payload)
-      yield put({ type: 'hideLoginLoading' })
+      // yield put({ type: 'showLoginLoading' })
+      // const data = yield call(login, payload)
+      // yield put({ type: 'hideLoginLoading' })
       // if (data.success) {
       //   const from = queryURL('from')
       //   yield put({ type: 'app/query' })
