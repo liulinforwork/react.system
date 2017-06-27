@@ -7,25 +7,28 @@ import Modal from './Modal'
 const Quick = ({ dispatch, quick }) => {
 
   const { visible,list } = quick;
-
+  const name = "dfsdfds";
   // 添加快捷语
   const onAdd = () => {
     dispatch({
-      type: 'quick/showModal',
+      type: 'quick/addText',
+      payload:{
+        name: ''
+      }
     })
   };
 
-  // 修改快捷语
+  // 编辑快捷语
   const onModify = () => {
     dispatch({
-      type: 'quick/showModal',
+      type: 'quick/upText',
     })
   };
 
   // 删除快捷语
   const onDelete = () => {
     dispatch({
-      type: 'quick/showModal',
+      type: 'quick/remove',
     })
   };
 
@@ -53,11 +56,9 @@ const Quick = ({ dispatch, quick }) => {
       </div>
     }
   ];
-
   const styleObj = {
     "margin":"20px auto"
   };
-
   const modalProps = {
     title: "添加快捷语",
     okText: "添加",
@@ -75,7 +76,6 @@ const Quick = ({ dispatch, quick }) => {
   };
 
   return (
-
     <div className="content-inner">
       <Button style={styleObj} type="primary" onClick={onAdd}>添加快捷语</Button>
       <Table

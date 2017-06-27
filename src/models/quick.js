@@ -10,15 +10,6 @@ export default {
     list: [],
     // total: null,
   },
-
-  effects: {
-    *fetch({ payload: { name } }, { call, put }) {
-      const { data, headers } = yield call(usersService.query, { name });
-      // console.log(data);
-      yield put({ type: 'save', payload: { data} });
-      // const list = yield select(state=>state.list);
-    },
-  },
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
@@ -29,6 +20,36 @@ export default {
         }
       });
     },
+  },
+
+  effects: {
+    *fetch({ payload: { name } }, { call, put }) {
+      const { data, headers } = yield call(usersService.query, { name });
+      // console.log(data);
+      yield put({ type: 'save', payload: { data} });
+      // const list = yield select(state=>state.list);
+    },
+
+    *addText({ payload: { name } }, { call, put }) {
+      console.log(12)
+      const { data, headers } = yield call(usersService.remove, {name});
+      console.log(data);
+      yield put({ type: 'save', payload: { data} });
+      // const list = yield select(state=>state.list);
+    },
+
+    *remove({ payload: { name } }, { call, put }) {
+      const { data, headers } = yield call(usersService.remove, {});
+      console.log(data);
+      // yield put({ type: 'save', payload: { data} });
+      // const list = yield select(state=>state.list);
+    },
+    *upText({ payload: { name } }, { call, put }) {
+      const { data, headers } = yield call(usersService.upText, {});
+      console.log(data);
+      // yield put({ type: 'save', payload: { data} });
+      // const list = yield select(state=>state.list);
+    }
   },
 
   reducers: {
