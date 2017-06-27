@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# Antd Admin
+# 基于Antd Admin的管理系统
 
 [![React Native](https://img.shields.io/badge/react-^15.4.4-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
 [![Ant Design](https://img.shields.io/badge/ant--design-^2.10.0-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
@@ -113,15 +112,3 @@ npm run lint
 
 dashboard设计稿：<https://dribbble.com/shots/3108122-Dashboard-Admin> （已征得作者同意）
 
-## 截屏
-
-web
-
-![](assets/4.2.1-demo-1.gif)
-
-移动
-
-![](assets/4.2.1-demo-2.gif)
-=======
-# react
->>>>>>> 7d91fbaf0e3eb19fed269bf5ea520c456145d77b
