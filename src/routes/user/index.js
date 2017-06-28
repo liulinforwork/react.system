@@ -113,8 +113,8 @@ const User = ({ dispatch, user }) => {
     },
     {
       title: '姓名',
-      dataIndex: 'name',
-      key: 'name'
+      dataIndex: 'NAME',
+      key: 'NAME'
     },
     {
       title: '电话',
@@ -122,27 +122,29 @@ const User = ({ dispatch, user }) => {
       key: 'phone'
     },
     {
-      title: '离职时间',
-      dataIndex: 'time',
-      key: 'time'
-    },
-    {
       title: '职位',
-      dataIndex: 'position',
-      key: 'position'
+      dataIndex: 'positionName',
+      key: 'positionName'
     },
     {
       title: '部门',
-      dataIndex: 'department',
-      key: 'department'
+      dataIndex: 'departMentName',
+      key: 'departMentName'
     },
+    {
+      title: '离职时间',
+      dataIndex: 'dimisssionState',
+      key: 'dimisssionState'
+    },
+
     {
       title: '操作',
       key: 'operation',
       width: 100,
       render: () =>
         <div>
-          <span onClick={onDelete}>置为离职</span>
+          <span onClick={onDelete}>离职</span>
+          <span onClick={onDelete}>分配</span>
         </div>
     }
   ];
@@ -171,7 +173,7 @@ const User = ({ dispatch, user }) => {
       })
     }
   };
-
+  console.log(list);
   return (
     <div className="content-inner">
       <Button style={styleObj} type="primary" onClick={onAdd}>
@@ -185,9 +187,7 @@ const User = ({ dispatch, user }) => {
       <ul className={Style.TagWp}>
         <li><EditableTagGroup /></li>
         <li><EditableTagGroup /></li>
-        <li>
-
-        </li>
+        <li></li>
       </ul>
 
 

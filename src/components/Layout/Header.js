@@ -6,8 +6,21 @@ import Menus from './Menu'
 
 const SubMenu = Menu.SubMenu
 
-const Header = ({ user, logout, switchSider, siderFold, isNavbar, menuPopoverVisible, location, switchMenuPopover, navOpenKeys, changeOpenKeys, menu }) => {
-  let handleClickMenu = e => e.key === 'logout' && logout()
+const Header = ({ user, logout, modifyPwd, switchSider, siderFold, isNavbar, menuPopoverVisible, location, switchMenuPopover, navOpenKeys, changeOpenKeys, menu }) => {
+  let handleClickMenu = e => {
+    console.log(e);
+    switch (e.key){
+      case 'pwd':
+        console.log("开始修改密码吧！");
+        break;
+      case 'logout':
+        logout({id:1});
+        break;
+      default:
+        console.log("未知情况");
+        break;
+    }
+  }
   const menusProps = {
     menu,
     siderFold: false,
@@ -30,33 +43,29 @@ const Header = ({ user, logout, switchSider, siderFold, isNavbar, menuPopoverVis
           <Icon type={siderFold ? 'menu-unfold' : 'menu-fold'} />
         </div>}
       <div className={styles.rightWarpper}>
-        <div className={styles.button}>
-          <Icon type="mail" />&nbsp;信息
-        </div>
+
         <Menu mode="horizontal" onClick={handleClickMenu}>
           <SubMenu style={{
             float: 'right',
           }} title={< span > <Icon type="user" />
             {user.username}司马懿之大军师联盟</span>}
           >
-            <Menu.Item key="pwd">
-              修改密码
-            </Menu.Item>
-            <Menu.Item key="logout">
-              退出登录
-            </Menu.Item>
-
+            <Menu.Item key="pwd">修改密码</Menu.Item>
+            <Menu.Item key="logout">退出登录</Menu.Item>
           </SubMenu>
         </Menu>
       </div>
     </div>
   )
 }
-
+// <div className={styles.button}>
+//   <Icon type="mail" />&nbsp;信息
+// </div>
 Header.propTypes = {
   menu: PropTypes.array,
   user: PropTypes.object,
   logout: PropTypes.func,
+  modifyPwd: PropTypes.func,
   switchSider: PropTypes.func,
   siderFold: PropTypes.bool,
   isNavbar: PropTypes.bool,

@@ -1,12 +1,11 @@
 import axios from 'axios'
 import qs from 'qs'
-import { YQL, CORS, baseURL, version} from './config'
+import { YQL, CORS, baseURL, version, baseURL_pay } from './config'
 import jsonp from 'jsonp'
 import lodash from 'lodash'
 import pathToRegexp from 'path-to-regexp'
 import { message } from 'antd'
 
-axios.defaults.baseURL = baseURL
 
 const fetch = (options) => {
 
@@ -15,7 +14,16 @@ const fetch = (options) => {
     data,
     fetchType,
     url,
+    urlType
   } = options
+
+  if(urlType==1){
+    axios.defaults.baseURL = baseURL_pay;/*监理宝支付模块*/
+
+  }else{
+    axios.defaults.baseURL = baseURL;/*监理宝*/
+  }
+
 
   const cloneData = lodash.cloneDeep(data)
 

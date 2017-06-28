@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
-import { Button,Table,Input } from 'antd'
+import { Button,Table,Input,Popconfirm, message } from 'antd'
 import Modal from './Modal'
 
 const Quick = ({ dispatch, quick }) => {
 
   const { visible,list } = quick;
-  const name = "dfsdfds";
+
   // 添加快捷语
   const onAdd = () => {
     dispatch({
@@ -17,18 +17,22 @@ const Quick = ({ dispatch, quick }) => {
       }
     })
   };
-
+  // 删除快捷语
+  const onDelete = (e) => {
+    dispatch({
+      type: 'quick/remove',
+      payload:{
+        id:list.id
+      }
+    })
+  };
   // 编辑快捷语
   const onModify = () => {
     dispatch({
       type: 'quick/upText',
-    })
-  };
-
-  // 删除快捷语
-  const onDelete = () => {
-    dispatch({
-      type: 'quick/remove',
+      payload:{
+        name: ''
+      }
     })
   };
 
@@ -49,10 +53,14 @@ const Quick = ({ dispatch, quick }) => {
       width: 100,
       render: () =>
       <div>
-        <span onClick={onDelete}>删除</span>
+        <Popconfirm title="你确认删除这条快捷语吗?" onConfirm={onDelete}  okText="确定" cancelText="取消">
+          <a href="#">删除</a>
+        </Popconfirm>
         &nbsp;
         &nbsp;
-        <span onClick={onModify}>编辑</span>
+        <Popconfirm title="你确认编辑这条快捷语吗?" onConfirm={onModify}  okText="确定" cancelText="取消">
+          <a href="#">编辑</a>
+        </Popconfirm>
       </div>
     }
   ];
@@ -74,7 +82,6 @@ const Quick = ({ dispatch, quick }) => {
       })
     }
   };
-
   return (
     <div className="content-inner">
       <Button style={styleObj} type="primary" onClick={onAdd}>添加快捷语</Button>

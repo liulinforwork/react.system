@@ -65,11 +65,11 @@ const Routers = function ({ history, app }) {
 
         //监理
         {
-          path: 'supervisor',
+          path: 'account',
           getComponent (nextState, cb) {
             require.ensure([], require => {
-              // registerModel(app, require('./models/login'))
-              cb(null, require('./routes/supervisor/'))
+              registerModel(app, require('./models/account'))
+              cb(null, require('./routes/account/'))
             }, 'login')
           },
         },
@@ -94,13 +94,13 @@ const Routers = function ({ history, app }) {
         //   },
         // },
 
-        //商品房创建
+        //项目列表
         {
-          path: 'house/create',
+          path: 'house/list',
           getComponent (nextState, cb) {
             require.ensure([], require => {
-              // registerModel(app, require('./models/login'))
-              cb(null, require('./routes/house/create'))
+              registerModel(app, require('./models/house'))
+              cb(null, require('./routes/house/list'))
             }, 'login')
           },
         },
@@ -157,96 +157,7 @@ const Routers = function ({ history, app }) {
           },
         },
 
-        {
-          path: 'login',
-          getComponent (nextState, cb) {
-            require.ensure([], require => {
-              registerModel(app, require('./models/login'))
-              cb(null, require('./routes/login/'))
-            }, 'login')
-          },
-        },
 
-        // {
-        //   path: 'UIElement/iconfont',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/UIElement/iconfont/'))
-        //     }, 'UIElement-iconfont')
-        //   },
-        // },
-        // {
-        //   path: 'UIElement/search',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/UIElement/search/'))
-        //     }, 'UIElement-search')
-        //   },
-        // },
-        // {
-        //   path: 'UIElement/dropOption',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/UIElement/dropOption/'))
-        //     }, 'UIElement-dropOption')
-        //   },
-        // },
-        // {
-        //   path: 'UIElement/layer',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/UIElement/layer/'))
-        //     }, 'UIElement-layer')
-        //   },
-        // },
-        // {
-        //   path: 'UIElement/dataTable',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/UIElement/dataTable/'))
-        //     }, 'UIElement-dataTable')
-        //   },
-        // },
-        // {
-        //   path: 'UIElement/editor',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/UIElement/editor/'))
-        //     }, 'UIElement-editor')
-        //   },
-        // },
-        // {
-        //   path: 'chart/lineChart',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/chart/lineChart/'))
-        //     }, 'chart-lineChart')
-        //   },
-        // },
-        // {
-        //   path: 'chart/barChart',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/chart/barChart/'))
-        //     }, 'chart-barChart')
-        //   },
-        // },
-        // {
-        //   path: 'chart/areaChart',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/chart/areaChart/'))
-        //     }, 'chart-areaChart')
-        //   },
-        // },
-        // {
-        //   path: '*',
-        //   getComponent (nextState, cb) {
-        //     require.ensure([], require => {
-        //       cb(null, require('./routes/error/'))
-        //     }, 'error')
-        //   },
-        // },
       ],
     },
   ]

@@ -28,10 +28,10 @@ export default {
     setup ({ dispatch, history }) {
       history.listen(location => {
         if (location.pathname === '/user') {
-          // dispatch({
-          //   type: 'query',
-          //   payload: location.query,
-          // })
+          dispatch({
+            type: 'query',
+            payload: location.query,
+          })
         }
       })
     },
@@ -42,16 +42,17 @@ export default {
     *query ({ payload }, { call, put }) {
       payload = parse(location.search.substr(1))
       const data = yield call(query, payload)
+      console.log(data);
       if (data) {
         yield put({
           type: 'querySuccess',
           payload: {
-            list: data.data,
-            pagination: {
-              current: Number(payload.page) || 1,
-              pageSize: Number(payload.pageSize) || 10,
-              total: data.total,
-            },
+            list: data.data.rst,
+            // pagination: {
+            //   current: Number(payload.page) || 1,
+            //   pageSize: Number(payload.pageSize) || 10,
+            //   total: data.total,
+            // },
           },
         })
       }
@@ -106,12 +107,14 @@ export default {
 
     querySuccess (state, action) {
       const { list, pagination } = action.payload
+      console.log(list)
       return { ...state,
-        list,
-        pagination: {
-          ...state.pagination,
-          ...pagination,
-        } }
+        list
+        // pagination: {
+        //   ...state.pagination,
+        //   ...pagination,
+        // }
+      }
     },
 
     updateState (state, { payload }) {

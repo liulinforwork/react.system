@@ -4,7 +4,7 @@
 import * as usersService from '../services/quick';
 
 export default {
-  namespace: 'quick',
+  namespace: 'house',
   state: {
     visible: false,
     list: [],
@@ -16,8 +16,8 @@ export default {
         if (pathname === '/quick') {
           dispatch({ type: 'fetch', payload: {
             // name: ''
-              pageNo:1,
-              pageSize:20
+            pageNo:1,
+            pageSize:20
           } });
         }
       });

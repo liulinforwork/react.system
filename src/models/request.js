@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/6/16.
  */
-import * as usersService from '../services/quick';
+import * as usersService from '../services/request';
 
 export default {
   namespace: 'request',
@@ -12,9 +12,9 @@ export default {
   },
 
   effects: {
-    *fetch({ payload: { name } }, { call, put }) {
-      const { data, headers } = yield call(usersService.query, { name });
-      // yield put({ type: 'save', payload: { data, total: headers['x-total-count'] } });
+    *fetch({ payload: { pageNo, pageSize } }, { call, put }) {
+      const { data, headers } = yield call(usersService.query, { pageNo, pageSize });
+      yield put({ type: 'save', payload: { data} });
     },
   },
   subscriptions: {
@@ -22,7 +22,8 @@ export default {
       return history.listen(({ pathname, query }) => {
         if (pathname === '/request') {
           dispatch({ type: 'fetch', payload: {
-            name: '龙大侠的测试帐号'
+            pageNo:1,
+            pageSize:20
           } });
         }
       });
@@ -30,9 +31,10 @@ export default {
   },
 
   reducers: {
-    // save(state, { payload: { data: list, total } }) {
-    //   return { ...state, list, total };
-    // },
+    save(state, { payload:quick}) {
+      const list = quick.data.pageSet;
+      return {...state,list}
+    },
 
     showModal (state, { payload }) {
       return { ...state, ...payload, visible: true }
