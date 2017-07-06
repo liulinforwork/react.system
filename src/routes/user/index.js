@@ -6,8 +6,6 @@ import Modal from './Modal'
 import Style from './User.less'
 // import Search from './../../components'
 
-
-
 import { Tag, Input, Tooltip, Button, Table} from 'antd';
 const Search = Input.Search;
 
