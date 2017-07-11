@@ -68,60 +68,88 @@ module.exports = [
     bpid: 8,
     mpid: 8,
     name: '项目审核',
-    router: '/house/review',
+    router: '/house/review'
   },
   {
     id:83,
     bpid: 8,
     mpid: 8,
     name: '项目公开',
-    router: '/house/open',
+    router: '/house/open'
+  },
+
+  {
+    id:9,
+    bpid: 1,
+    name: '统计图表',
+    icon: 'api'
+  },
+  {
+    id:91,
+    bpid: 9,
+    mpid: 9,
+    name: '饼状图',
+    router: '/chart/pieChart'
+  },
+  {
+    id:92,
+    bpid: 9,
+    mpid: 9,
+    name: '柱状图',
+    router: '/chart/barChart'
+  },
+  {
+    id:93,
+    bpid: 9,
+    mpid: 9,
+    name: '折线图',
+    router: '/chart/lineChart'
+
+  },
+
+  {
+    id:10,
+    bpid: 1,
+    name: '系统设置',
+    icon: 'setting'
+  },
+  {
+    id:101,
+    bpid: 10,
+    mpid: 10,
+    name: '全局设置',
+    router: '/audio'
+  },
+  {
+    id:102,
+    bpid: 10,
+    mpid: 10,
+    name: '个人设置',
+    router: '/video'
   },
 
   // {
-  //   id:9,
+  //   id:11,
   //   bpid: 1,
-  //   name: '统计图表',
-  //   icon: 'api',
+  //   name: '素材管理',
+  //   icon: 'setting'
   // },
-  // {
-  //   id:91,
-  //   bpid: 19,
-  //   mpid: 9,
-  //   name: '柱状图',
-  // },
-  // {
-  //   id:92,
-  //   bpid: 9,
-  //   mpid: 9,
-  //   name: '饼状图',
-  // },
-  // {
-  //   id:93,
-  //   bpid: 9,
-  //   mpid: 9,
-  //   name: '折线图',
-  //
-  // },
-  //
-  // {
-  //   id:10,
-  //   bpid: 1,
-  //   name: '系统设置',
-  //   icon: 'setting',
-  // },
-  // {
-  //   id:101,
-  //   bpid: 10,
-  //   mpid: 10,
-  //   name: '全局设置',
-  // },
-  // {
-  //   id:102,
-  //   bpid: 10,
-  //   mpid: 10,
-  //   name: '个人设置',
-  // },
+  {
+    id:11,
+    bpid: 1,
+    // mpid: 11,
+    name: '音频列表',
+    icon:'appstore-o',
+    router: '/audio'
+  },
+  {
+    id:12,
+    bpid: 1,
+    // mpid: 11,
+    name: '视频列表',
+    icon:'hdd',
+    router: '/video'
+  }
 
 ]
 

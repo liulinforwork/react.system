@@ -157,6 +157,40 @@ const Routers = function ({ history, app }) {
           },
         },
 
+        {
+          path: 'chart/pieChart',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/chart/pieChart'))
+            }, 'login')
+          },
+        },
+
+        {
+          path: 'chart/barChart',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/chart/barChart'))
+            }, 'login')
+          },
+        },
+
+        {
+          path: 'chart/lineChart',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/chart/lineChart'))
+            }, 'login')
+          },
+        },
+        {
+          path: '*',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/error/'))
+            }, 'error')
+          }
+        }
 
       ],
     },

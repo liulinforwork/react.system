@@ -1,5 +1,5 @@
 module.exports = {
-  name: '监理宝',
+  name: '马克巴·监理BAO',
   prefix: 'antdAdmin',
   footerText: '四川马丁洛克网络科技  © 2017 四川成都',
   logo: '/logo.png',

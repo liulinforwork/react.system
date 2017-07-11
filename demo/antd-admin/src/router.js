@@ -135,7 +135,7 @@ const Routers = function ({ history, app }) {
           path: '*',
           getComponent (nextState, cb) {
             require.ensure([], require => {
-              cb(null, require('./routes/error/'))
+              cb(null, require('./routes/error'))
             }, 'error')
           },
         },

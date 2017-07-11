@@ -66,18 +66,6 @@ const fetch = (options) => {
   }
 
   const befor = function (obj) {
-
-    // let _timestamp = ;
-    // let _sign = "";
-
-    // var cookies = $inject.get("Cookies"),
-    //   tool = $inject.get("Tools"),
-    // var _userId = cookies.get("userId");
-    // if(tool.isEmpty(_userId)){
-    //   alert("用户过期！");
-    //   return false;
-    // };
-
     let params = {
       userId: 8,
       timestamp: new Date().getTime(),
@@ -88,7 +76,6 @@ const fetch = (options) => {
       h5: 0
     };
     return qs.stringify(params);
-    // return params;
   }
 
 
@@ -112,7 +99,22 @@ const fetch = (options) => {
     default:
       return axios(options)
   }
-}
+};
+
+const loginOut = (code) => {
+  switch (code){
+    case 108:
+      message.error('登录超时，请重新登录');
+      //清除所有cookie
+      //跳转至登录页面
+      break;
+    case 200:
+          break;
+    default:
+      //清除所有cookie
+          break;
+  }
+};
 
 export default function request (options) {
 
@@ -128,9 +130,11 @@ export default function request (options) {
       }
     }
   }
-  // console.log(options)
   return fetch(options).then((response) => {
     const { statusText, status } = response
+
+    loginOut(response.status);
+
     let data = options.fetchType === 'YQL' ? response.data.query.results.json : response.data
     return {
       success: true,
