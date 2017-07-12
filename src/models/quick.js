@@ -21,19 +21,26 @@ export default {
 
   effects: {
     *fetch({ payload: { pageNo, pageSize } }, { call, put }) {
-      const { data, headers } = yield call(usersService.query, { pageNo, pageSize });
+      const { data } = yield call(usersService.query, { pageNo, pageSize });
       yield put({ type: 'save', payload: { data} });
     },
 
+
+
     *addText({ payload: { name } }, { call, put }) {
-      const { data, headers } = yield call(usersService.addText, {name});
-      // console.log(data);
-      yield put({ type: 'add', payload: { data} });
+      yield call(usersService.addText, {name});
+      yield put({ type: 'fetch', payload: {
+        pageNo:1,
+        pageSize:20
+      }});
     },
 
-    *remove({ payload: { name } }, { call, put }) {
-      const { data, headers } = yield call(usersService.remove, {});
-      console.log("删除成功"+data);
+    *remove({ payload: { id } }, { call, put }) {
+      const { data } = yield call(usersService.remove, {id});
+      yield put({ type: 'fetch', payload: {
+        pageNo:1,
+        pageSize:20
+      }});
     },
 
     *upText({ payload: { name } }, { call, put }) {
