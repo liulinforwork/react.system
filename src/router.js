@@ -181,8 +181,40 @@ const Routers = function ({ history, app }) {
             require.ensure([], require => {
               cb(null, require('./routes/chart/lineChart'))
             }, 'login')
+          }
+        },
+
+        {
+          path: 'video',
+          getComponent (nextState, cb) {
+            require.ensure( [
+              '../public/ueditor/utf8-jsp/ueditor.config.js',
+              '../public/ueditor/utf8-jsp/ueditor.all.js',
+              // './routes/video/index.js'
+              // './routes/video'
+            ], require => {
+              cb(null, require(
+                // [
+                //   '../public/ueditor/utf8-jsp/ueditor.config.js',
+                //   '../public/ueditor/utf8-jsp/ueditor.all.js',
+                //   './routes/video/index.js'
+                //   // './routes/video'
+                // ]
+                './routes/video'
+              ))
+            }, 'video')
           },
         },
+
+        {
+          path: 'audio',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              cb(null, require('./routes/audio'))
+            }, 'audio')
+          },
+        },
+
         {
           path: '*',
           getComponent (nextState, cb) {

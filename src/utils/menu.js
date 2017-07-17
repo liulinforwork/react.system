@@ -118,14 +118,14 @@ module.exports = [
     bpid: 10,
     mpid: 10,
     name: '全局设置',
-    router: '/audio'
+    router: '/set/global'
   },
   {
     id:102,
     bpid: 10,
     mpid: 10,
     name: '个人设置',
-    router: '/video'
+    router: '/set/local'
   },
 
   // {
@@ -137,7 +137,6 @@ module.exports = [
   {
     id:11,
     bpid: 1,
-    // mpid: 11,
     name: '音频列表',
     icon:'appstore-o',
     router: '/audio'
@@ -145,7 +144,6 @@ module.exports = [
   {
     id:12,
     bpid: 1,
-    // mpid: 11,
     name: '视频列表',
     icon:'hdd',
     router: '/video'
